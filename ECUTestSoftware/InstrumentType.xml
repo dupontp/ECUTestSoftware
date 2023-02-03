@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Widget Provider="HTW_Saar" Type="Instrument" DisplayName="Str_Instrument" IconName="Ico_InstrumentIcon" PreferredSize="100,100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\Program Files (x86)\Common Files\ETAS\INCA7.2\XML\schema\Etas.OpenEE.Widget.xsd">
+  <Properties RefType="InstrumentProperties" />
+  <WidgetDataTypes>
+    <WidgetData>
+      <PossibleSignals MinVariableCount="1" MaxVariableCount="1000">
+        <Signal>
+          <VariableClasses>
+            <VariableClass Value="Measurement" />
+          </VariableClasses>
+          <VariableTypes>
+            <VariableType Value="Scalar" />
+            <VariableType Value="Array" />
+          </VariableTypes>
+          <ElementDataTypes>
+            <ElementDataType Value="Boolean" />
+            <ElementDataType Value="Numeric" />
+            <ElementDataType Value="Ascii" />
+          </ElementDataTypes>
+        </Signal>
+      </PossibleSignals>
+    </WidgetData>
+  </WidgetDataTypes>
+</Widget>
+<!---->
+<!--Description of XML-structure and example:-->
+<!--
+
+As you can see above, if you have activated different settings of the "Signal Types" page 
+of the wizard, there are already corresponding tags inserted in this XML-structure.
+This is an example of a correct instrument type XML-structure:
+
+<Properties RefType="InstrumentProperties" />
+  <WidgetDataTypes>
+    <WidgetData>
+      <PossibleSignals MinVariableCount="2" MaxVariableCount="15">
+        <Signal>
+          <VariableClasses>
+            <VariableClass Value="Calibration" />
+            <VariableClass Value="Measurement" />
+          </VariableClasses>
+          <VariableTypes>
+            <VariableType Value="Scalar" />
+            <VariableType Value="Vector" />
+            <VariableType Value="Array" />
+          </VariableTypes>
+          <ElementDataTypes>
+            <ElementDataType Value="Numeric" />
+            <ElementDataType Value="Boolean" />
+            <ElementDataType Value="Ascii" />
+          </ElementDataTypes>
+        </Signal>
+      </PossibleSignals>
+    </WidgetData>
+  </WidgetDataTypes>
+
+If you have activated "multiple" at the "count of variable" comboBox at the "Signal Types" page of the wizard,
+you will get a default setting of minimum 1 to maximum 1000 variables (see <PossibleSignals>). Here, 
+you can adjust your favourite number of minimal and maximal allowed variables for this instrument.
+
+The "variables types", you have selected at the wizard, will be represented at the <VariableTypes> tag. Here,
+of course, you can change your previous settings with the assistance of the availiable XML schema definition.
+
+The "element data types" determine the data types of the element of each signal. By default, there exist
+the types "Numeric" and "Boolean", but you are welcome to change these settings with the assistance of the 
+availiable XML schema definition.
+
+-->

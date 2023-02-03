@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PropertiesMetadata Provider="HTW_Saar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\Program Files (x86)\Common Files\ETAS\INCA7.2\XML\schema\Etas.OpenEE.Properties.xsd">
+  <PropertyGroups>
+    <PropertyGroup Type="InstrumentProperties">
+    </PropertyGroup>
+  </PropertyGroups>
+</PropertiesMetadata>
+<!---->
+<!--Description of XML-structure and example:-->
+<!--
+
+As you can see above, if you have appended properties of the "Properties" page of the wizard,
+there are already corresponding tags inserted in this XML-structure.
+This is an example of a correct instrument properties XML-structure:
+
+<PropertyGroup Type="InstrumentProperties">
+  <PropertyDef Key="WindowSizeChangeable" DisplayKey="Str_WindowSizeChangeable">
+    <Boolean BooleanFormat="TrueFalse" DefaultValue="false" />
+    <Description DisplayKey="Str_WindowSizeChangeable_Description" />
+  </PropertyDef>
+  <PropertyDef Key="MeasurementColor" DisplayKey="Str_MeasurementColor">
+    <Color DefaultValue="#CCCCCC" />
+    <Description DisplayKey="Str_MeasurementColor_Description" />
+  </PropertyDef>
+  <PropertyDef Key="GoalPath" DisplayKey="Str_GoalPath">
+    <Directory DefaultValue="C:\directoryPath" />
+    <Description DisplayKey="Str_GoalPath_Description" />
+  </PropertyDef>
+  <PropertyDef Key="CalibrationColor" DisplayKey="Str_CalibrationColor">
+    <Enumeration DefaultValue="0">
+      <EnumerationItem Value="0" DisplayKey="gruen"/>
+      <EnumerationItem Value="1" DisplayKey="gelb"/>
+      <EnumerationItem Value="2" DisplayKey="blau"/>
+    </Enumeration>
+    <Description DisplayKey="Str_CalibrationColor_Description" />
+  </PropertyDef>
+  <PropertyDef Key="InstrumentURL" DisplayKey="Str_InstrumentURL">
+    <File DefaultValue="C:\filePath" />
+    <Description DisplayKey="Str_InstrumentURL_Description" />
+  </PropertyDef>
+  <PropertyDef Key="SizeofVariableDisplay" DisplayKey="Str_SizeofVariableDisplay">
+    <Numeric DefaultValue="0" DecimalPlaces="1" MinValue="0" MaxValue="100" NumericType="Double" NumericFormat="Decimal" />
+    <Description DisplayKey="Str_SizeofVariableDisplay_Description" />
+  </PropertyDef>
+  <PropertyDef Key="Subtitle" DisplayKey="Str_Subtitle">
+    <String DefaultValue="http://www.etas.com" />
+    <Description DisplayKey="Str_Subtitle_Description" />
+  </PropertyDef>      
+</PropertyGroup>
+
+There exist seven different property types for an INCA instrument: Boolean, Color, Directory, Enumeration, File,
+Numeric and String. You are welcome to add and remove as much property definitions as you want, even several 
+property definitions of the same type.
+
+At the "InstrumentResources.resx" file of this custom instrument project, you will see also your list of 
+properties with the specific keys and display keys. Here, you can also rechange the keys.
+
+Each property has a default value, which will be set and shown first, if the user opens the 
+"display configurations" window at INCA.
+
+Except of the other property types, both types "Boolean" and "Numeric" have more attributes than only the 
+default value:
+At the "Boolean" property, you can also set different "boolean formats", which are shown in the selection
+comboBox at the "display configuration" window in INCA: "YesNo" , "OnOff" and "TrueFalse".
+At the "Numeric" property, you can determine the number of "decimal places" and a minimum and/or maximum value,
+which INCA automatically checks and accordingly the user asks to change the value he wanted to set. You can
+also choose between lots of different numeric types and set the numeric format between "Decimal", "Hexadecimal"
+and "Binary".
+
+At the "Enumeration" property, you are invited to create different "enumeration items". Later, the user can 
+select between these items at the "display configuration" window.
+
+-->
