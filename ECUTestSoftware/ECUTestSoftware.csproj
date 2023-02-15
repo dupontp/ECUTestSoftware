@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HTW_Saar.ECUTestSoftware</RootNamespace>
     <AssemblyName>HTW_Saar.ECUTestSoftware</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -43,6 +43,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,13 +53,66 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>lib\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ASAM.XIL.Implementation.Testbench">
+      <HintPath>lib\ASAM.XIL.Implementation.Testbench.dll</HintPath>
+    </Reference>
+    <Reference Include="ASAM.XIL.Interfaces">
+      <HintPath>lib\ASAM.XIL.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Bosch.CalibDataIO">
+      <HintPath>lib\Bosch.CalibDataIO.dll</HintPath>
+    </Reference>
+    <Reference Include="BoschEngineering.MicroLC.XiL.Model">
+      <HintPath>lib\BoschEngineering.MicroLC.XiL.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="BoschEngineering.MicroLC.XiL.Testbench">
+      <HintPath>lib\BoschEngineering.MicroLC.XiL.Testbench.dll</HintPath>
+    </Reference>
+    <Reference Include="DataIO_DBC_MLC">
+      <HintPath>lib\DataIO_DBC_MLC.dll</HintPath>
+    </Reference>
+    <Reference Include="DLLCopy">
+      <HintPath>lib\DLLCopy.exe</HintPath>
+    </Reference>
+    <Reference Include="DLLUtils">
+      <HintPath>lib\DLLUtils.dll</HintPath>
+    </Reference>
     <Reference Include="Etas.Base.Shared">
       <HintPath>.\Etas.Base.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Etas.OpenEE">
       <HintPath>.\Etas.OpenEE.dll</HintPath>
+    </Reference>
+    <Reference Include="FibexLoaderAPI">
+      <HintPath>lib\FibexLoaderAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="GtFrNETAdapter">
+      <HintPath>lib\GtFrNETAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="LDFReader">
+      <HintPath>lib\LDFReader.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroLC_CommunicationProtocol">
+      <HintPath>lib\MicroLC_CommunicationProtocol.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroLC_Device">
+      <HintPath>lib\MicroLC_Device.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroLC_Device.Contract">
+      <HintPath>lib\MicroLC_Device.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroLC_Software_API">
+      <HintPath>lib\MicroLC_Software_API.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -123,6 +177,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -133,8 +190,8 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>@echo off
-if not exist "C:\ETASData\INCA7.2\Instruments" mkdir "C:\ETASData\INCA7.2\Instruments"
-xcopy "$(TargetDir)*.*" "C:\ETASData\INCA7.2\Instruments\$(TargetName)\" /e /v /h /y
+if not exist "C:\ETASData\INCA7.2\Instruments" mkdir "C:\ETASData\INCA7.2\\Instruments"
+xcopy "$(TargetDir)." "C:\ETASData\INCA7.2\Instruments\$(TargetName)\" /e /v /h /y
 @echo on
 @echo Copied built DLLs to InstrumentsDir = C:\ETASData\INCA7.2\Instruments\$(TargetName)
 :end</PostBuildEvent>

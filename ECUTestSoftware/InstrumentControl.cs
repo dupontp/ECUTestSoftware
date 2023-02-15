@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using bosch.de.abt.beg.microLC.API;
 
 namespace HTW_Saar.ECUTestSoftware
 {
@@ -20,6 +22,10 @@ namespace HTW_Saar.ECUTestSoftware
     /// </remarks>
     public partial class InstrumentControl : UserControl, IWidget
     {
+
+        static MicroLCManager manager = MicroLCManager.InitializeManager(true);
+        Device myDevice = manager.Devices[0];
+
         private IWidgetHost _WidgetHost; //is supposed to connect to and to react on all of the events included
         //private WidgetHostEventSink _EventSink; 
         //an object of the WidgetHostEventSink class of this custom instrument
@@ -96,6 +102,9 @@ namespace HTW_Saar.ECUTestSoftware
                 _WidgetHost.Configuration.WidgetDatas[0].ElementReferences;
 
             this.InitializeValueAccesses(initializedElementReferences, null);
+
+            
+
         }
 
         /// <summary>
@@ -336,6 +345,18 @@ namespace HTW_Saar.ECUTestSoftware
         private void LoadFileBtn_Click(object sender, EventArgs e)
         {
 
+
+            myDevice.RPM.Enginespeed = 5000;
+
+            //TxtBox1.Text = myDevice.Type.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            myDevice.RPM.Enginespeed = 5000;
+
+            textBox1.Text = myDevice.Type.ToString();
+            textBox2.Text = myDevice.RPM.Enginespeed.ToString();
         }
     }
 }
