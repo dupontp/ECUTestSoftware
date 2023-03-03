@@ -61,6 +61,16 @@ namespace HTW_Saar.ECUTestSoftware {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap htwsaar_Logo_ingwi {
+            get {
+                object obj = ResourceManager.GetObject("htwsaar_Logo_ingwi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Ico_InstrumentIcon {

@@ -9,6 +9,11 @@ using bosch.de.abt.beg.microLC.API;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Threading;
+using System.Windows;
+using ASAM.XIL.Interfaces.Testbench.MAPort.Enum;
+using System.IO;
+using TextBox = System.Windows.Forms.TextBox;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace HTW_Saar.ECUTestSoftware
 {
@@ -29,6 +34,7 @@ namespace HTW_Saar.ECUTestSoftware
         static MicroLCManager manager = MicroLCManager.InitializeManager(true);
         Device myDevice = manager.Devices[0];
 
+        string Path = "C:\\Users\\p.dupont.MCG1.000\\Documents\\GoogleDrive\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
         private IWidgetHost _WidgetHost; //is supposed to connect to and to react on all of the events included
         //private WidgetHostEventSink _EventSink; 
         //an object of the WidgetHostEventSink class of this custom instrument
@@ -66,6 +72,12 @@ namespace HTW_Saar.ECUTestSoftware
             SoftwareversionTxtBox.Text = myDevice.Softwareversion;
             SerialTxtBox.Text = myDevice.Serial;
             TypeTxtBox.Text = myDevice.Type;
+
+            foreach(string file in Directory.GetFiles(Path))
+            {
+                FileNameLoadComboBox.Items.Add(file.Replace(Path + "\\", "").Replace(".ptm", ""));
+            }
+            
         }
 
         /// <summary>
@@ -389,39 +401,64 @@ namespace HTW_Saar.ECUTestSoftware
             V1TxtBox.Text = V1ComboBox.SelectedItem.ToString();
             V2TxtBox.Text = V2ComboBox.SelectedItem.ToString();
 
+            V1TxtBox.Update();
+            V2TxtBox.Update();
+
             if (V1ComboBox.SelectedItem == "n" && V2ComboBox.SelectedItem == "alpha")
             {
-                float V1min = float.Parse(V1minTxtBox.Text);
-                float V1max = float.Parse(V1maxTxtBox.Text);
-                int Steps = Int32.Parse(StepsTxtBox.Text);
-
-                float V1delta = (V1max - V1min) / Steps;
-
-                float V2min = float.Parse(V2minTxtBox.Text);
-                float V2max = float.Parse(V2maxTxtBox.Text);
-
-                float V2delta = (V2max - V2min) / Steps;
-
-                for(float n = V1min; n <= V1max; n += V1delta)
+                if (myDevice.ThrottleValve != null) // MicroLC 2 doesn´t have a Throttle Valve Simulation
                 {
-                    for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                    float V1min = float.Parse(V1minTxtBox.Text);
+                    float V1max = float.Parse(V1maxTxtBox.Text);
+                    int Steps = Int32.Parse(StepsTxtBox.Text);
+
+                    float V1delta = (V1max - V1min) / Steps;
+
+                    float V2min = float.Parse(V2minTxtBox.Text);
+                    float V2max = float.Parse(V2maxTxtBox.Text);
+
+                    float V2delta = (V2max - V2min) / Steps;
+
+                    deltaV1TxtBox.Text = V1delta.ToString();
+                    deltaV2TxtBox.Text = V2delta.ToString();
+
+                    deltaV1TxtBox.Update();
+                    deltaV2TxtBox.Update();
+
+                    for (float n = V1min; n <= V1max; n += V1delta)
                     {
-                        myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
-
-                        V1TxtBox.Text = myDevice.RPM.Enginespeed.ToString();
-                        V2TxtBox.Text = alpha.ToString();
-
-                        try
+                        for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
                         {
-                            Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                            MeasurementActiveTxtBox.Text = "500";
-                            Thread.Sleep(500);
+                            //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                            V1ValueTxtBox.Text = n.ToString();
+                            V2ValueTxtBox.Text = alpha.ToString();
+
+                            V1ValueTxtBox.Update();
+                            V2ValueTxtBox.Update();
+
+                            try
+                            {
+                                Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                MeasurementActiveTxtBox.Text = "500";
+
+                                MeasurementActiveTxtBox.Update();
+
+                                Thread.Sleep(500);
+                            }
                         }
                     }
+
+                    MessageBox.Show("Simulation erfolgreich beendet!", "INFO");
+
+                }
+                else
+                {
+                    MessageBox.Show("Gerät unterstützt keine Drosselklappenstellungssimulation!", "FEHLER");
                 }
             }
         }
@@ -473,6 +510,87 @@ namespace HTW_Saar.ECUTestSoftware
             catch
             {
                 MessageBox.Show("Falsches Format!", "FEHLER");
+            }
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            if(FileNameTxtBox.Text.Trim() == "")
+            {
+                FileNameTxtBox.Text = "Config" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                FileNameTxtBox.Update();
+            }
+
+            try
+            {
+                string Content = "";
+
+                foreach (Control element in this.Controls)
+                {
+                    if (element.GetType() == typeof(TextBox))
+                    {
+                        TextBox ele = element as TextBox;
+
+                        Content += ele.Text + "#";
+                    }
+                    if (element.GetType() == typeof(ComboBox))
+                    {
+                        ComboBox ele = element as ComboBox;
+
+                        Content += ele.SelectedItem + "#";
+                    }
+                }
+
+                //Content: Filename, MeasureTime, Steps, V2max, V1max
+                StreamWriter SW = new StreamWriter(Path + "\\" + FileNameTxtBox.Text + ".ptm");
+
+                SW.Write(Content);
+
+                SW.Close();
+                SW.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Speichern der Konfiguration! \r\n\r\n" + ex.Message + "\r\n\r\n" + Path, "FEHLER");
+            }
+
+
+        }
+
+        private void LoadBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StreamReader SR = new StreamReader(Path + "\\" + FileNameLoadComboBox.SelectedItem + ".ptm");
+
+                string[] Content = SR.ReadToEnd().Split('#');
+
+                SR.Close();
+                SR.Dispose();
+
+                int Index = 0;
+
+                foreach (Control element in this.Controls)
+                {
+                    if (element.GetType() == typeof(TextBox))
+                    {
+                        TextBox ele = element as TextBox;
+
+                        ele.Text = Content[Index];
+                        Index++;
+                    }
+                    if (element.GetType() == typeof(ComboBox))
+                    {
+                        ComboBox ele = element as ComboBox;
+
+                        ele.SelectedItem = Content[Index];
+                        Index++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Laden der Konfiguration! \r\n\r\n" + ex.Message, "FEHLER");
             }
         }
     }

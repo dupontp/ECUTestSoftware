@@ -38,6 +38,10 @@
             this.V2maxTxtBox = new System.Windows.Forms.TextBox();
             this.V1maxTxtBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.deltaV2TxtBox = new System.Windows.Forms.TextBox();
+            this.deltaV1TxtBox = new System.Windows.Forms.TextBox();
             this.V2TxtBox = new System.Windows.Forms.TextBox();
             this.V1TxtBox = new System.Windows.Forms.TextBox();
             this.V2ValueTxtBox = new System.Windows.Forms.TextBox();
@@ -65,15 +69,22 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.MeasurementActiveTxtBox = new System.Windows.Forms.TextBox();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.LoadBtn = new System.Windows.Forms.Button();
+            this.FileNameTxtBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.FileNameLoadComboBox = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StepSlider)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // StartBtn
             // 
-            this.StartBtn.Location = new System.Drawing.Point(581, 31);
+            this.StartBtn.Location = new System.Drawing.Point(579, 43);
             this.StartBtn.Margin = new System.Windows.Forms.Padding(2);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(132, 46);
@@ -103,7 +114,7 @@
             // V1ComboBox
             // 
             this.V1ComboBox.FormattingEnabled = true;
-            this.V1ComboBox.Location = new System.Drawing.Point(11, 30);
+            this.V1ComboBox.Location = new System.Drawing.Point(9, 42);
             this.V1ComboBox.Name = "V1ComboBox";
             this.V1ComboBox.Size = new System.Drawing.Size(121, 21);
             this.V1ComboBox.TabIndex = 3;
@@ -111,14 +122,14 @@
             // V2ComboBox
             // 
             this.V2ComboBox.FormattingEnabled = true;
-            this.V2ComboBox.Location = new System.Drawing.Point(11, 57);
+            this.V2ComboBox.Location = new System.Drawing.Point(9, 69);
             this.V2ComboBox.Name = "V2ComboBox";
             this.V2ComboBox.Size = new System.Drawing.Size(121, 21);
             this.V2ComboBox.TabIndex = 4;
             // 
             // V1minTxtBox
             // 
-            this.V1minTxtBox.Location = new System.Drawing.Point(137, 31);
+            this.V1minTxtBox.Location = new System.Drawing.Point(135, 43);
             this.V1minTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.V1minTxtBox.Name = "V1minTxtBox";
             this.V1minTxtBox.Size = new System.Drawing.Size(218, 20);
@@ -127,7 +138,7 @@
             // 
             // V2minTxtBox
             // 
-            this.V2minTxtBox.Location = new System.Drawing.Point(137, 57);
+            this.V2minTxtBox.Location = new System.Drawing.Point(135, 69);
             this.V2minTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.V2minTxtBox.Name = "V2minTxtBox";
             this.V2minTxtBox.Size = new System.Drawing.Size(218, 20);
@@ -136,7 +147,7 @@
             // 
             // V2maxTxtBox
             // 
-            this.V2maxTxtBox.Location = new System.Drawing.Point(359, 57);
+            this.V2maxTxtBox.Location = new System.Drawing.Point(357, 69);
             this.V2maxTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.V2maxTxtBox.Name = "V2maxTxtBox";
             this.V2maxTxtBox.Size = new System.Drawing.Size(218, 20);
@@ -144,7 +155,7 @@
             // 
             // V1maxTxtBox
             // 
-            this.V1maxTxtBox.Location = new System.Drawing.Point(359, 31);
+            this.V1maxTxtBox.Location = new System.Drawing.Point(357, 43);
             this.V1maxTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.V1maxTxtBox.Name = "V1maxTxtBox";
             this.V1maxTxtBox.Size = new System.Drawing.Size(218, 20);
@@ -153,6 +164,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.deltaV2TxtBox);
+            this.panel1.Controls.Add(this.deltaV1TxtBox);
             this.panel1.Controls.Add(this.V2TxtBox);
             this.panel1.Controls.Add(this.V1TxtBox);
             this.panel1.Controls.Add(this.V2ValueTxtBox);
@@ -161,6 +176,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(281, 295);
             this.panel1.TabIndex = 9;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 76);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(89, 17);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "delta V2";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(83, 17);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "delta V1";
+            // 
+            // deltaV2TxtBox
+            // 
+            this.deltaV2TxtBox.Location = new System.Drawing.Point(91, 74);
+            this.deltaV2TxtBox.Margin = new System.Windows.Forms.Padding(2);
+            this.deltaV2TxtBox.Name = "deltaV2TxtBox";
+            this.deltaV2TxtBox.Size = new System.Drawing.Size(188, 20);
+            this.deltaV2TxtBox.TabIndex = 14;
+            // 
+            // deltaV1TxtBox
+            // 
+            this.deltaV1TxtBox.Location = new System.Drawing.Point(91, 50);
+            this.deltaV1TxtBox.Margin = new System.Windows.Forms.Padding(2);
+            this.deltaV1TxtBox.Name = "deltaV1TxtBox";
+            this.deltaV1TxtBox.Size = new System.Drawing.Size(188, 20);
+            this.deltaV1TxtBox.TabIndex = 13;
             // 
             // V2TxtBox
             // 
@@ -200,7 +251,7 @@
             // 
             // StepSlider
             // 
-            this.StepSlider.Location = new System.Drawing.Point(3, 118);
+            this.StepSlider.Location = new System.Drawing.Point(1, 130);
             this.StepSlider.Maximum = 1000;
             this.StepSlider.Minimum = 2;
             this.StepSlider.Name = "StepSlider";
@@ -212,7 +263,7 @@
             // 
             // StepsTxtBox
             // 
-            this.StepsTxtBox.Location = new System.Drawing.Point(11, 165);
+            this.StepsTxtBox.Location = new System.Drawing.Point(9, 177);
             this.StepsTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.StepsTxtBox.Name = "StepsTxtBox";
             this.StepsTxtBox.Size = new System.Drawing.Size(121, 20);
@@ -316,7 +367,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Montalban", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 295);
+            this.label1.Location = new System.Drawing.Point(3, 292);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(200, 45);
             this.label1.TabIndex = 13;
@@ -326,7 +377,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Montalban", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(952, 295);
+            this.label2.Location = new System.Drawing.Point(952, 292);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(289, 45);
             this.label2.TabIndex = 14;
@@ -366,7 +417,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(8, 146);
+            this.label11.Location = new System.Drawing.Point(6, 158);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(21, 17);
             this.label11.TabIndex = 18;
@@ -376,7 +427,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(666, 146);
+            this.label12.Location = new System.Drawing.Point(664, 158);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 17);
             this.label12.TabIndex = 19;
@@ -386,7 +437,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(431, 621);
+            this.label13.Location = new System.Drawing.Point(383, 621);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(523, 17);
             this.label13.TabIndex = 15;
@@ -395,7 +446,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HTW_Saar.ECUTestSoftware.InstrumentResources.Marvin;
-            this.pictureBox1.Location = new System.Drawing.Point(325, 541);
+            this.pictureBox1.Location = new System.Drawing.Point(277, 541);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -406,7 +457,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 98);
+            this.label15.Location = new System.Drawing.Point(1, 110);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 17);
             this.label15.TabIndex = 22;
@@ -424,17 +475,83 @@
             // 
             // MeasurementActiveTxtBox
             // 
-            this.MeasurementActiveTxtBox.Location = new System.Drawing.Point(1018, 31);
+            this.MeasurementActiveTxtBox.Location = new System.Drawing.Point(1016, 43);
             this.MeasurementActiveTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.MeasurementActiveTxtBox.Name = "MeasurementActiveTxtBox";
             this.MeasurementActiveTxtBox.Size = new System.Drawing.Size(223, 20);
             this.MeasurementActiveTxtBox.TabIndex = 23;
             this.MeasurementActiveTxtBox.TextChanged += new System.EventHandler(this.MeasurementActiveTxtBox_TextChanged);
             // 
+            // SaveBtn
+            // 
+            this.SaveBtn.Font = new System.Drawing.Font("Montalban", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBtn.Location = new System.Drawing.Point(1107, 96);
+            this.SaveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(132, 46);
+            this.SaveBtn.TabIndex = 25;
+            this.SaveBtn.Text = "Save Configuration";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            // 
+            // LoadBtn
+            // 
+            this.LoadBtn.Font = new System.Drawing.Font("Montalban", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadBtn.Location = new System.Drawing.Point(1107, 146);
+            this.LoadBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadBtn.Name = "LoadBtn";
+            this.LoadBtn.Size = new System.Drawing.Size(132, 46);
+            this.LoadBtn.TabIndex = 26;
+            this.LoadBtn.Text = "Load Configuration";
+            this.LoadBtn.UseVisualStyleBackColor = true;
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+            // 
+            // FileNameTxtBox
+            // 
+            this.FileNameTxtBox.Location = new System.Drawing.Point(819, 122);
+            this.FileNameTxtBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FileNameTxtBox.Name = "FileNameTxtBox";
+            this.FileNameTxtBox.Size = new System.Drawing.Size(284, 20);
+            this.FileNameTxtBox.TabIndex = 27;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Montalban", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(816, 96);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(84, 17);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "Filename";
+            // 
+            // FileNameLoadComboBox
+            // 
+            this.FileNameLoadComboBox.FormattingEnabled = true;
+            this.FileNameLoadComboBox.Location = new System.Drawing.Point(819, 170);
+            this.FileNameLoadComboBox.Name = "FileNameLoadComboBox";
+            this.FileNameLoadComboBox.Size = new System.Drawing.Size(284, 21);
+            this.FileNameLoadComboBox.TabIndex = 29;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::HTW_Saar.ECUTestSoftware.InstrumentResources.htwsaar_Logo_ingwi;
+            this.pictureBox2.Location = new System.Drawing.Point(1321, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(275, 110);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 30;
+            this.pictureBox2.TabStop = false;
+            // 
             // InstrumentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.FileNameLoadComboBox);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.FileNameTxtBox);
+            this.Controls.Add(this.LoadBtn);
+            this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.MeasurementActiveTxtBox);
             this.Controls.Add(this.label15);
@@ -459,13 +576,14 @@
             this.Controls.Add(this.V1ComboBox);
             this.Controls.Add(this.StartBtn);
             this.Name = "InstrumentControl";
-            this.Size = new System.Drawing.Size(1244, 641);
+            this.Size = new System.Drawing.Size(1599, 641);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StepSlider)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,5 +628,15 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox MeasurementActiveTxtBox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox deltaV2TxtBox;
+        private System.Windows.Forms.TextBox deltaV1TxtBox;
+        private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button LoadBtn;
+        private System.Windows.Forms.TextBox FileNameTxtBox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox FileNameLoadComboBox;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
