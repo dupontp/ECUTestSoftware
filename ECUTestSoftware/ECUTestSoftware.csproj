@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InstrumentProperties.xml" />
+    <None Include="Resources\Marvin.PNG" />
     <None Include="Resources\Ico_InstrumentIcon.ico" />
     <EmbeddedResource Include="InstrumentControl.resx">
       <DependentUpon>InstrumentControl.cs</DependentUpon>

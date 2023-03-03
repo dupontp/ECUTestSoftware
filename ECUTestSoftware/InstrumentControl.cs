@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using bosch.de.abt.beg.microLC.API;
+using System.Reflection;
+using System.Xml.Linq;
+using System.Threading;
 
 namespace HTW_Saar.ECUTestSoftware
 {
@@ -49,6 +52,20 @@ namespace HTW_Saar.ECUTestSoftware
             InitializeComponent();
             //_EventSink = new WidgetHostEventSink(this);
             //an instance of the new WidgetHostEventSink object with this InstrumentControl as parameter
+
+            V1ComboBox.Items.Add("");
+            V1ComboBox.Items.Add("n");
+            V1ComboBox.Items.Add("alpha");
+
+            V2ComboBox.Items.Add("");
+            V2ComboBox.Items.Add("n");
+            V2ComboBox.Items.Add("alpha");
+
+            FirmwareTxtBox.Text = myDevice.FirmwareId;
+            IsVirtualTxtBox.Text = myDevice.IsVirtual.ToString();
+            SoftwareversionTxtBox.Text = myDevice.Softwareversion;
+            SerialTxtBox.Text = myDevice.Serial;
+            TypeTxtBox.Text = myDevice.Type;
         }
 
         /// <summary>
@@ -342,21 +359,121 @@ namespace HTW_Saar.ECUTestSoftware
 
         #endregion
 
-        private void LoadFileBtn_Click(object sender, EventArgs e)
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
-
-            myDevice.RPM.Enginespeed = 5000;
-
-            //TxtBox1.Text = myDevice.Type.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            myDevice.RPM.Enginespeed = 5000;
 
-            textBox1.Text = myDevice.Type.ToString();
-            textBox2.Text = myDevice.RPM.Enginespeed.ToString();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            if(V1ComboBox.SelectedItem.ToString() == V2ComboBox.SelectedItem.ToString())
+            {
+                MessageBox.Show("Dumm?", "FEHLER");
+            }
+
+            V1TxtBox.Text = V1ComboBox.SelectedItem.ToString();
+            V2TxtBox.Text = V2ComboBox.SelectedItem.ToString();
+
+            if (V1ComboBox.SelectedItem == "n" && V2ComboBox.SelectedItem == "alpha")
+            {
+                float V1min = float.Parse(V1minTxtBox.Text);
+                float V1max = float.Parse(V1maxTxtBox.Text);
+                int Steps = Int32.Parse(StepsTxtBox.Text);
+
+                float V1delta = (V1max - V1min) / Steps;
+
+                float V2min = float.Parse(V2minTxtBox.Text);
+                float V2max = float.Parse(V2maxTxtBox.Text);
+
+                float V2delta = (V2max - V2min) / Steps;
+
+                for(float n = V1min; n <= V1max; n += V1delta)
+                {
+                    for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                    {
+                        myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                        V1TxtBox.Text = myDevice.RPM.Enginespeed.ToString();
+                        V2TxtBox.Text = alpha.ToString();
+
+                        try
+                        {
+                            Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                            MeasurementActiveTxtBox.Text = "500";
+                            Thread.Sleep(500);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void StepsTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                StepSlider.Value = int.Parse(StepsTxtBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("\"Steps\" müssen ein Integer-Wert sein!", "FEHLER");
+            }
+            
+        }
+
+        private void V1TxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void V2TxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StepSlider_Scroll(object sender, EventArgs e)
+        {
+            StepsTxtBox.Text = StepSlider.Value.ToString();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MeasurementActiveTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int.Parse(MeasurementActiveTxtBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Falsches Format!", "FEHLER");
+            }
         }
     }
 }
