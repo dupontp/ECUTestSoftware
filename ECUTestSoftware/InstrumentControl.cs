@@ -593,5 +593,10 @@ namespace HTW_Saar.ECUTestSoftware
                 MessageBox.Show("Fehler beim Laden der Konfiguration! \r\n\r\n" + ex.Message, "FEHLER");
             }
         }
+
+        private void FileNameLoadComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

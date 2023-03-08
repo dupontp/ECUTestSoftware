@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstrumentControl));
             this.StartBtn = new System.Windows.Forms.Button();
             this.FirmwareTxtBox = new System.Windows.Forms.TextBox();
             this.IsVirtualTxtBox = new System.Windows.Forms.TextBox();
@@ -84,6 +85,7 @@
             // 
             // StartBtn
             // 
+            this.StartBtn.Font = new System.Drawing.Font("Montalban", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartBtn.Location = new System.Drawing.Point(579, 43);
             this.StartBtn.Margin = new System.Windows.Forms.Padding(2);
             this.StartBtn.Name = "StartBtn";
@@ -202,6 +204,7 @@
             this.deltaV2TxtBox.Location = new System.Drawing.Point(91, 74);
             this.deltaV2TxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.deltaV2TxtBox.Name = "deltaV2TxtBox";
+            this.deltaV2TxtBox.ReadOnly = true;
             this.deltaV2TxtBox.Size = new System.Drawing.Size(188, 20);
             this.deltaV2TxtBox.TabIndex = 14;
             // 
@@ -210,6 +213,7 @@
             this.deltaV1TxtBox.Location = new System.Drawing.Point(91, 50);
             this.deltaV1TxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.deltaV1TxtBox.Name = "deltaV1TxtBox";
+            this.deltaV1TxtBox.ReadOnly = true;
             this.deltaV1TxtBox.Size = new System.Drawing.Size(188, 20);
             this.deltaV1TxtBox.TabIndex = 13;
             // 
@@ -238,6 +242,7 @@
             this.V2ValueTxtBox.Location = new System.Drawing.Point(74, 26);
             this.V2ValueTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.V2ValueTxtBox.Name = "V2ValueTxtBox";
+            this.V2ValueTxtBox.ReadOnly = true;
             this.V2ValueTxtBox.Size = new System.Drawing.Size(205, 20);
             this.V2ValueTxtBox.TabIndex = 10;
             // 
@@ -246,6 +251,7 @@
             this.V1ValueTxtBox.Location = new System.Drawing.Point(74, 2);
             this.V1ValueTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.V1ValueTxtBox.Name = "V1ValueTxtBox";
+            this.V1ValueTxtBox.ReadOnly = true;
             this.V1ValueTxtBox.Size = new System.Drawing.Size(205, 20);
             this.V1ValueTxtBox.TabIndex = 9;
             // 
@@ -445,7 +451,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::HTW_Saar.ECUTestSoftware.InstrumentResources.Marvin;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(277, 541);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 97);
@@ -531,10 +537,11 @@
             this.FileNameLoadComboBox.Name = "FileNameLoadComboBox";
             this.FileNameLoadComboBox.Size = new System.Drawing.Size(284, 21);
             this.FileNameLoadComboBox.TabIndex = 29;
+            this.FileNameLoadComboBox.SelectedIndexChanged += new System.EventHandler(this.FileNameLoadComboBox_SelectedIndexChanged);
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::HTW_Saar.ECUTestSoftware.InstrumentResources.htwsaar_Logo_ingwi;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(1321, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(275, 110);
