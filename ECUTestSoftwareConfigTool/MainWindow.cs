@@ -17,6 +17,7 @@ namespace ECUTestSoftwareConfigTool
             V2ComboBox.Items.Add("n");
             V2ComboBox.Items.Add("alpha");
 
+            StepsTxtBox.Text = "2";
 
             foreach (string file in Directory.GetFiles(Path))
             {
@@ -39,6 +40,23 @@ namespace ECUTestSoftwareConfigTool
             if (V1ComboBox.SelectedItem.ToString() == V2ComboBox.SelectedItem.ToString())
             {
                 MessageBox.Show("Dumm?", "FEHLER");
+
+                return;
+            }
+
+            bool Proceed = true;
+
+            if(GetSimTime() > 120)
+            {
+                DialogResult dialogResult = MessageBox.Show("Simulation is going to take over 2 minutes. Do you want to proceed?", "WARNING", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Proceed = true;
+                }
+                else
+                {
+                    Proceed = false;
+                }
             }
 
             V1TxtBox.Text = V1ComboBox.SelectedItem.ToString();
@@ -47,7 +65,7 @@ namespace ECUTestSoftwareConfigTool
             V1TxtBox.Update();
             V2TxtBox.Update();
 
-            if (V1ComboBox.SelectedItem == "n" && V2ComboBox.SelectedItem == "alpha")
+            if (Proceed && V1ComboBox.SelectedItem == "n" && V2ComboBox.SelectedItem == "alpha")
             {
                 float V1min = float.Parse(V1minTxtBox.Text);
                 float V1max = float.Parse(V1maxTxtBox.Text);
@@ -227,6 +245,13 @@ namespace ECUTestSoftwareConfigTool
             }
 
             return -1;
+        }
+
+        private void AboutBtn_Click(object sender, EventArgs e)
+        {
+            AboutWindow frmAbout = new AboutWindow();
+
+            frmAbout.Show();
         }
     }
 }

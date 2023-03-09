@@ -361,9 +361,9 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SettingsBtn,
-            this.AboutBtn,
             this.DocumentationBtn,
-            this.ConfigArchiveBtn});
+            this.ConfigArchiveBtn,
+            this.AboutBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1435, 25);
@@ -387,6 +387,7 @@
             this.AboutBtn.Name = "AboutBtn";
             this.AboutBtn.Size = new System.Drawing.Size(60, 22);
             this.AboutBtn.Text = "About";
+            this.AboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
             // 
             // DocumentationBtn
             // 
