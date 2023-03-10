@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,12 +49,37 @@ namespace ECUTestSoftwareConfigTool
                 }
             }
 
+            foreach (Control element in this.Controls)
+            {
+                if (element.GetType() == typeof(Button))
+                {
+                    Button ele = element as Button;
+
+                    ele.Click += (s, e) =>
+                    {
+                        BtnClick(ele);
+                    };
+                }
+            }
+
             this.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void BtnClick(Button ele)
         {
+            try
+            {
+                int ButtonNr = Int16.Parse(ele.Name.Replace("button", ""));
 
+                if (ButtonNr % 2 == 0)
+                {
+
+                }
+            }
+            catch
+            {
+                
+            }
         }
     }
 }

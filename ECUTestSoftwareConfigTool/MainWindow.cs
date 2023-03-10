@@ -3,7 +3,7 @@ namespace ECUTestSoftwareConfigTool
     public partial class MainWindow : Form
     {
         //TODO: Settings Window implementieren
-        public string Path = "E:\\DriveFS\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
+        public string Path = "C:\\Users\\p.dupont.MCG1.000\\Documents\\GoogleDrive\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
 
         public MainWindow()
         {
@@ -296,7 +296,7 @@ namespace ECUTestSoftwareConfigTool
         {
             ArchiveWindow FormArchive = new ArchiveWindow();
 
-            FormArchive.Load("E:\\DriveFS\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen");
+            FormArchive.Load(Path);
         }
     }
 }
