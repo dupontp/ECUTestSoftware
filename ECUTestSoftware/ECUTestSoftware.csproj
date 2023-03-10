@@ -57,31 +57,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr4.Runtime">
-      <HintPath>lib\Antlr4.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\Antlr4.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="ASAM.XIL.Implementation.Testbench">
-      <HintPath>lib\ASAM.XIL.Implementation.Testbench.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\ASAM.XIL.Implementation.Testbench.dll</HintPath>
     </Reference>
     <Reference Include="ASAM.XIL.Interfaces">
-      <HintPath>lib\ASAM.XIL.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\ASAM.XIL.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Bosch.CalibDataIO">
-      <HintPath>lib\Bosch.CalibDataIO.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\Bosch.CalibDataIO.dll</HintPath>
     </Reference>
     <Reference Include="BoschEngineering.MicroLC.XiL.Model">
-      <HintPath>lib\BoschEngineering.MicroLC.XiL.Model.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\BoschEngineering.MicroLC.XiL.Model.dll</HintPath>
     </Reference>
     <Reference Include="BoschEngineering.MicroLC.XiL.Testbench">
-      <HintPath>lib\BoschEngineering.MicroLC.XiL.Testbench.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\BoschEngineering.MicroLC.XiL.Testbench.dll</HintPath>
     </Reference>
     <Reference Include="DataIO_DBC_MLC">
-      <HintPath>lib\DataIO_DBC_MLC.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\DataIO_DBC_MLC.dll</HintPath>
     </Reference>
     <Reference Include="DLLCopy">
-      <HintPath>lib\DLLCopy.exe</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\DLLCopy.exe</HintPath>
     </Reference>
     <Reference Include="DLLUtils">
-      <HintPath>lib\DLLUtils.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\DLLUtils.dll</HintPath>
     </Reference>
     <Reference Include="Etas.Base.Shared">
       <HintPath>.\Etas.Base.Shared.dll</HintPath>
@@ -90,29 +90,48 @@
       <HintPath>.\Etas.OpenEE.dll</HintPath>
     </Reference>
     <Reference Include="FibexLoaderAPI">
-      <HintPath>lib\FibexLoaderAPI.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\FibexLoaderAPI.dll</HintPath>
     </Reference>
     <Reference Include="GtFrNETAdapter">
-      <HintPath>lib\GtFrNETAdapter.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\GtFrNETAdapter.dll</HintPath>
     </Reference>
     <Reference Include="LDFReader">
-      <HintPath>lib\LDFReader.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\LDFReader.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MicroLC_CommunicationProtocol">
-      <HintPath>lib\MicroLC_CommunicationProtocol.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_CommunicationProtocol.dll</HintPath>
     </Reference>
     <Reference Include="MicroLC_Device">
-      <HintPath>lib\MicroLC_Device.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Device.dll</HintPath>
     </Reference>
     <Reference Include="MicroLC_Device.Contract">
-      <HintPath>lib\MicroLC_Device.Contract.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Device.Contract.dll</HintPath>
     </Reference>
     <Reference Include="MicroLC_Software_API">
-      <HintPath>lib\MicroLC_Software_API.dll</HintPath>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Software_API.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroLC_Software_Logic">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Software_Logic.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroLC_Util">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Util.dll</HintPath>
+    </Reference>
+    <Reference Include="MultimediaTimer">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MultimediaTimer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RegDLLServerEcuTest">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\RegDLLServerEcuTest.exe</HintPath>
+    </Reference>
+    <Reference Include="SyntaxHighlighter">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\SyntaxHighlighter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -128,6 +147,15 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WinUSBConnector">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\WinUSBConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="WinUSB_DFUE">
+      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\WinUSB_DFUE.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InstrumentControl.cs">
