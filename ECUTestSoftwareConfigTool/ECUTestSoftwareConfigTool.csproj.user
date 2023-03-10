@@ -4,6 +4,9 @@
     <Compile Update="AboutWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ArchiveWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

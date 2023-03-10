@@ -3,7 +3,7 @@ namespace ECUTestSoftwareConfigTool
     public partial class MainWindow : Form
     {
         //TODO: Settings Window implementieren
-        string Path = "C:\\Users\\p.dupont.MCG1.000\\Documents\\GoogleDrive\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
+        public string Path = "E:\\DriveFS\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
 
         public MainWindow()
         {
@@ -19,10 +19,7 @@ namespace ECUTestSoftwareConfigTool
 
             StepsTxtBox.Text = "2";
 
-            foreach (string file in Directory.GetFiles(Path))
-            {
-                FileNameLoadComboBox.Items.Add(file.Replace(Path + "\\", "").Replace(".ptm", ""));
-            }
+            LoadFiles();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,7 +29,38 @@ namespace ECUTestSoftwareConfigTool
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
+            if (FileNameTxtBox.Text.Trim() == "")
+            {
+                FileNameTxtBox.Text = "Config" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                FileNameTxtBox.Update();
+            }
 
+            try
+            {
+                string Content = "";
+
+                Content += FileNameTxtBox.Text + "#";
+                Content += V1ComboBox.SelectedItem + "#";
+                Content += V1minTxtBox.Text + "#";
+                Content += V1maxTxtBox.Text + "#";
+                Content += V2ComboBox.SelectedItem + "#";
+                Content += V2minTxtBox.Text + "#";
+                Content += V2maxTxtBox.Text + "#";
+                Content += MeasurementActiveTxtBox.Text + "#";
+                Content += StepsTxtBox.Text;
+
+
+                StreamWriter SW = new StreamWriter(Path + "\\" + FileNameTxtBox.Text + ".ptm");
+
+                SW.Write(Content);
+
+                SW.Close();
+                SW.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Speichern der Konfiguration! \r\n\r\n" + ex.Message + "\r\n\r\n" + Path, "FEHLER");
+            }
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -65,7 +93,7 @@ namespace ECUTestSoftwareConfigTool
             V1TxtBox.Update();
             V2TxtBox.Update();
 
-            if (Proceed && V1ComboBox.SelectedItem == "n" && V2ComboBox.SelectedItem == "alpha")
+            if (Proceed && V1ComboBox.SelectedItem.ToString() == "n" && V2ComboBox.SelectedItem.ToString() == "alpha")
             {
                 float V1min = float.Parse(V1minTxtBox.Text);
                 float V1max = float.Parse(V1maxTxtBox.Text);
@@ -117,38 +145,19 @@ namespace ECUTestSoftwareConfigTool
 
         private void LoadBtn_Click(object sender, EventArgs e)
         {
-            try
+            FileNameLoadComboBox.Items.Clear();
+
+            LoadFiles();
+        }
+
+        private void LoadFiles()
+        {
+            foreach (string file in Directory.GetFiles(Path))
             {
-                StreamReader SR = new StreamReader(Path + "\\" + FileNameLoadComboBox.SelectedItem + ".ptm");
-
-                string[] Content = SR.ReadToEnd().Split('#');
-
-                SR.Close();
-                SR.Dispose();
-
-                int Index = 0;
-
-                foreach (Control element in this.Controls)
+                if (file.Contains(".ptm"))
                 {
-                    if (element.GetType() == typeof(TextBox))
-                    {
-                        TextBox ele = element as TextBox;
-
-                        ele.Text = Content[Index];
-                        Index++;
-                    }
-                    if (element.GetType() == typeof(ComboBox))
-                    {
-                        ComboBox ele = element as ComboBox;
-
-                        ele.SelectedItem = Content[Index];
-                        Index++;
-                    }
+                    FileNameLoadComboBox.Items.Add(file.Replace(Path + "\\", "").Replace(".ptm", ""));
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Fehler beim Laden der Konfiguration! \r\n\r\n" + ex.Message, "FEHLER");
             }
         }
 
@@ -195,7 +204,36 @@ namespace ECUTestSoftwareConfigTool
 
         private void FileNameLoadComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                StreamReader SR = new StreamReader(Path + "\\" + FileNameLoadComboBox.SelectedItem + ".ptm");
 
+                string[] Content = SR.ReadToEnd().Split('#');
+
+                SR.Close();
+                SR.Dispose();
+
+
+                FileNameTxtBox.Text = Content[0];
+                V1ComboBox.SelectedItem = Content[1];
+                V1minTxtBox.Text = Content[2];
+                V1maxTxtBox.Text = Content[3];
+                V2ComboBox.SelectedItem = Content[4];
+                V2minTxtBox.Text = Content[5];
+                V2maxTxtBox.Text = Content[6];
+                MeasurementActiveTxtBox.Text= Content[7];
+                StepsTxtBox.Text = Content[8];
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Laden der Konfiguration! \r\n\r\n" + ex.Message, "FEHLER");
+            }
         }
 
         private void CalcSimTimeBtn_Click(object sender, EventArgs e)
@@ -241,7 +279,7 @@ namespace ECUTestSoftwareConfigTool
             }
             catch
             {
-                //MessageBox.Show("Steps-Text hat das falsche Format!", "FEHLER");
+                MessageBox.Show("Falsches Format!", "FEHLER");
             }
 
             return -1;
@@ -252,6 +290,13 @@ namespace ECUTestSoftwareConfigTool
             AboutWindow frmAbout = new AboutWindow();
 
             frmAbout.Show();
+        }
+
+        private void ConfigArchiveBtn_Click(object sender, EventArgs e)
+        {
+            ArchiveWindow FormArchive = new ArchiveWindow();
+
+            FormArchive.Load("E:\\DriveFS\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen");
         }
     }
 }
