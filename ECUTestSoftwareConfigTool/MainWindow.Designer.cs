@@ -68,6 +68,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.SimTimeTxtBox = new System.Windows.Forms.TextBox();
             this.CalcSimTimeBtn = new System.Windows.Forms.Button();
+            this.SawBtn = new System.Windows.Forms.RadioButton();
+            this.TriangleBtn = new System.Windows.Forms.RadioButton();
             LoadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StepSlider)).BeginInit();
             this.panel1.SuspendLayout();
@@ -142,7 +144,7 @@
             // StartBtn
             // 
             this.StartBtn.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartBtn.Location = new System.Drawing.Point(709, 43);
+            this.StartBtn.Location = new System.Drawing.Point(920, 43);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(132, 52);
             this.StartBtn.TabIndex = 7;
@@ -435,11 +437,40 @@
             this.CalcSimTimeBtn.UseVisualStyleBackColor = true;
             this.CalcSimTimeBtn.Click += new System.EventHandler(this.CalcSimTimeBtn_Click);
             // 
+            // SawBtn
+            // 
+            this.SawBtn.AutoSize = true;
+            this.SawBtn.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.dok;
+            this.SawBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SawBtn.Location = new System.Drawing.Point(709, 44);
+            this.SawBtn.Name = "SawBtn";
+            this.SawBtn.Size = new System.Drawing.Size(94, 19);
+            this.SawBtn.TabIndex = 28;
+            this.SawBtn.TabStop = true;
+            this.SawBtn.Text = "                       ";
+            this.SawBtn.UseVisualStyleBackColor = true;
+            // 
+            // TriangleBtn
+            // 
+            this.TriangleBtn.AutoSize = true;
+            this.TriangleBtn.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.dok;
+            this.TriangleBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TriangleBtn.Location = new System.Drawing.Point(809, 44);
+            this.TriangleBtn.Name = "TriangleBtn";
+            this.TriangleBtn.Size = new System.Drawing.Size(94, 19);
+            this.TriangleBtn.TabIndex = 29;
+            this.TriangleBtn.TabStop = true;
+            this.TriangleBtn.Text = "                       ";
+            this.TriangleBtn.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1435, 723);
+            this.Controls.Add(this.TriangleBtn);
+            this.Controls.Add(this.SawBtn);
             this.Controls.Add(this.CalcSimTimeBtn);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.SimTimeTxtBox);
@@ -522,5 +553,7 @@
         private Label label11;
         private TextBox SimTimeTxtBox;
         private Button CalcSimTimeBtn;
+        private RadioButton SawBtn;
+        private RadioButton TriangleBtn;
     }
 }

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.PathTxtBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BrowseBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.IndividualPathRadioBtn = new System.Windows.Forms.RadioButton();
             this.SelectedPathRadioBtn = new System.Windows.Forms.RadioButton();
@@ -43,7 +43,7 @@
             this.label1.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 15);
+            this.label1.Size = new System.Drawing.Size(111, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Export Path";
             // 
@@ -54,15 +54,15 @@
             this.PathTxtBox.Size = new System.Drawing.Size(457, 23);
             this.PathTxtBox.TabIndex = 2;
             // 
-            // button1
+            // BrowseBtn
             // 
-            this.button1.Location = new System.Drawing.Point(354, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BrowseBtn.Location = new System.Drawing.Point(354, 12);
+            this.BrowseBtn.Name = "BrowseBtn";
+            this.BrowseBtn.Size = new System.Drawing.Size(115, 23);
+            this.BrowseBtn.TabIndex = 3;
+            this.BrowseBtn.Text = "Browse";
+            this.BrowseBtn.UseVisualStyleBackColor = true;
+            this.BrowseBtn.Click += new System.EventHandler(this.BrowseBtn_Click);
             // 
             // SaveBtn
             // 
@@ -80,7 +80,7 @@
             this.IndividualPathRadioBtn.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.IndividualPathRadioBtn.Location = new System.Drawing.Point(12, 110);
             this.IndividualPathRadioBtn.Name = "IndividualPathRadioBtn";
-            this.IndividualPathRadioBtn.Size = new System.Drawing.Size(237, 19);
+            this.IndividualPathRadioBtn.Size = new System.Drawing.Size(235, 20);
             this.IndividualPathRadioBtn.TabIndex = 6;
             this.IndividualPathRadioBtn.TabStop = true;
             this.IndividualPathRadioBtn.Text = "Export to individual path";
@@ -92,7 +92,7 @@
             this.SelectedPathRadioBtn.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SelectedPathRadioBtn.Location = new System.Drawing.Point(12, 135);
             this.SelectedPathRadioBtn.Name = "SelectedPathRadioBtn";
-            this.SelectedPathRadioBtn.Size = new System.Drawing.Size(230, 19);
+            this.SelectedPathRadioBtn.Size = new System.Drawing.Size(230, 20);
             this.SelectedPathRadioBtn.TabIndex = 7;
             this.SelectedPathRadioBtn.TabStop = true;
             this.SelectedPathRadioBtn.Text = "Export to selected path";
@@ -106,7 +106,7 @@
             this.Controls.Add(this.SelectedPathRadioBtn);
             this.Controls.Add(this.IndividualPathRadioBtn);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BrowseBtn);
             this.Controls.Add(this.PathTxtBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -122,7 +122,7 @@
 
         private Label label1;
         private TextBox PathTxtBox;
-        private Button button1;
+        private Button BrowseBtn;
         private Button SaveBtn;
         private RadioButton IndividualPathRadioBtn;
         private RadioButton SelectedPathRadioBtn;

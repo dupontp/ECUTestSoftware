@@ -2,8 +2,7 @@ namespace ECUTestSoftwareConfigTool
 {
     public partial class MainWindow : Form
     {
-        //TODO: Settings Window implementieren
-        public string Path = "C:\\Users\\p.dupont.MCG1.000\\Documents\\GoogleDrive\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
+        public string[] Settings = new string[3];
 
         public MainWindow()
         {
@@ -19,12 +18,36 @@ namespace ECUTestSoftwareConfigTool
 
             StepsTxtBox.Text = "2";
 
+            LoadSettings();
+
             LoadFiles();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void LoadSettings() 
+        {
+            string Path = Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset";
+            if (!File.Exists(Path))
+            {
+                MessageBox.Show("Bei erster Benutzung muss das Programm in den Einstellungen konfiguriert werden!", "INFO");
+
+                SettingsWindow frmSet = new SettingsWindow();
+
+                frmSet.LoadForm();
+            }
+            else
+            {
+                StreamReader SR = new StreamReader(Path);
+
+                Settings = SR.ReadToEnd().Replace("\r", "").Split('\n');
+
+                SR.Close();
+                SR.Dispose();
+            }
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
@@ -50,7 +73,7 @@ namespace ECUTestSoftwareConfigTool
                 Content += StepsTxtBox.Text;
 
 
-                StreamWriter SW = new StreamWriter(Path + "\\" + FileNameTxtBox.Text + ".ptm");
+                StreamWriter SW = new StreamWriter(Settings[0] + "\\" + FileNameTxtBox.Text + ".ptm");
 
                 SW.Write(Content);
 
@@ -59,7 +82,7 @@ namespace ECUTestSoftwareConfigTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fehler beim Speichern der Konfiguration! \r\n\r\n" + ex.Message + "\r\n\r\n" + Path, "FEHLER");
+                MessageBox.Show("Fehler beim Speichern der Konfiguration! \r\n\r\n" + ex.Message + "\r\n\r\n" + Settings[0], "FEHLER");
             }
         }
 
@@ -152,12 +175,21 @@ namespace ECUTestSoftwareConfigTool
 
         private void LoadFiles()
         {
-            foreach (string file in Directory.GetFiles(Path))
+            try
             {
-                if (file.Contains(".ptm"))
+
+                foreach (string file in Directory.GetFiles(Settings[0]))
                 {
-                    FileNameLoadComboBox.Items.Add(file.Replace(Path + "\\", "").Replace(".ptm", ""));
+                    if (file.Contains(".ptm"))
+                    {
+                        FileNameLoadComboBox.Items.Add(file.Replace(Settings[0] + "\\", "").Replace(".ptm", ""));
+                    }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "FEHLER");
             }
         }
 
@@ -166,12 +198,7 @@ namespace ECUTestSoftwareConfigTool
             
         }
 
-        private void SettingsBtnClicked(object sender, EventArgs e)
-        {
-            SettingsWindow FrmSet = new SettingsWindow();
 
-            FrmSet.Show();
-        }
 
         private void StepsTxtBox_TextChanged(object sender, EventArgs e)
         {
@@ -206,7 +233,7 @@ namespace ECUTestSoftwareConfigTool
         {
             try
             {
-                StreamReader SR = new StreamReader(Path + "\\" + FileNameLoadComboBox.SelectedItem + ".ptm");
+                StreamReader SR = new StreamReader(Settings[0] + "\\" + FileNameLoadComboBox.SelectedItem + ".ptm");
 
                 string[] Content = SR.ReadToEnd().Split('#');
 
@@ -223,12 +250,6 @@ namespace ECUTestSoftwareConfigTool
                 V2maxTxtBox.Text = Content[6];
                 MeasurementActiveTxtBox.Text= Content[7];
                 StepsTxtBox.Text = Content[8];
-
-
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -296,7 +317,14 @@ namespace ECUTestSoftwareConfigTool
         {
             ArchiveWindow FormArchive = new ArchiveWindow();
 
-            FormArchive.Load(Path);
+            FormArchive.Load(Settings[0]);
+        }
+
+        private void SettingsBtnClicked(object sender, EventArgs e)
+        {
+            SettingsWindow FrmSet = new SettingsWindow();
+
+            FrmSet.LoadForm();
         }
     }
 }
