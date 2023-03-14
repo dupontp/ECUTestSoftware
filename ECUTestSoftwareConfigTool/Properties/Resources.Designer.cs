@@ -83,6 +83,26 @@ namespace ECUTestSoftwareConfigTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RandBtn {
+            get {
+                object obj = ResourceManager.GetObject("RandBtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SawBtn {
+            get {
+                object obj = ResourceManager.GetObject("SawBtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SettingsIcon {
             get {
                 object obj = ResourceManager.GetObject("SettingsIcon", resourceCulture);
@@ -96,6 +116,16 @@ namespace ECUTestSoftwareConfigTool.Properties {
         internal static System.Drawing.Bitmap SettingsIcon1 {
             get {
                 object obj = ResourceManager.GetObject("SettingsIcon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TriangleBtn {
+            get {
+                object obj = ResourceManager.GetObject("TriangleBtn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

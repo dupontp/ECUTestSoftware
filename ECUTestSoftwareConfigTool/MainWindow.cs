@@ -18,6 +18,9 @@ namespace ECUTestSoftwareConfigTool
 
             StepsTxtBox.Text = "2";
 
+            SawBtnV1.Checked = true;
+            SawBtnV2.Checked = true;
+
             LoadSettings();
 
             LoadFiles();
@@ -70,7 +73,13 @@ namespace ECUTestSoftwareConfigTool
                 Content += V2minTxtBox.Text + "#";
                 Content += V2maxTxtBox.Text + "#";
                 Content += MeasurementActiveTxtBox.Text + "#";
-                Content += StepsTxtBox.Text;
+                Content += StepsTxtBox.Text + "#";
+                Content += SawBtnV1.Checked + "#";
+                Content += TriangleBtnV1.Checked + "#";
+                Content += RandBtnV1.Checked + "#";
+                Content += SawBtnV2.Checked + "#";
+                Content += TriangleBtnV2.Checked + "#";
+                Content += RandBtnV2.Checked + "#";
 
 
                 StreamWriter SW = new StreamWriter(Settings[0] + "\\" + FileNameTxtBox.Text + ".ptm");
@@ -90,7 +99,7 @@ namespace ECUTestSoftwareConfigTool
         {
             if (V1ComboBox.SelectedItem.ToString() == V2ComboBox.SelectedItem.ToString())
             {
-                MessageBox.Show("Dumm?", "FEHLER");
+                MessageBox.Show("Es kann nicht eine Variable doppelt simuliert werden!", "FEHLER");
 
                 return;
             }
@@ -99,7 +108,7 @@ namespace ECUTestSoftwareConfigTool
 
             if(GetSimTime() > 120)
             {
-                DialogResult dialogResult = MessageBox.Show("Simulation is going to take over 2 minutes. Do you want to proceed?", "WARNING", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Simulation dauert über 2 Minuten. Fortfahren?", "WARNING", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Proceed = true;
@@ -135,30 +144,252 @@ namespace ECUTestSoftwareConfigTool
                 deltaV1TxtBox.Update();
                 deltaV2TxtBox.Update();
 
-                for (float n = V1min; n <= V1max; n += V1delta)
+                if (TriangleBtnV1.Checked)
                 {
-                    for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                    for (float n = V1min; n <= V1max; n += (V1delta))
                     {
-                        //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
-
-                        V1ValueTxtBox.Text = n.ToString();
-                        V2ValueTxtBox.Text = alpha.ToString();
-
-                        V1ValueTxtBox.Update();
-                        V2ValueTxtBox.Update();
-
-                        try
+                        if (TriangleBtnV2.Checked)
                         {
-                            Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                            for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                            for (float alpha = V2max; alpha >= V2min; alpha -= (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
                         }
-                        catch
+                        else if (SawBtnV2.Checked)
                         {
-                            MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                            MeasurementActiveTxtBox.Text = "500";
+                            for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                            MeasurementActiveTxtBox.Update();
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
 
-                            Thread.Sleep(500);
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                        }
+                    }
+                    for (float n = V1max; n >= V1min; n -= (V1delta))
+                    {
+                        if (TriangleBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                            for (float alpha = V2max; alpha >= V2min; alpha -= (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                        }
+                        else if (SawBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (SawBtnV1.Checked)
+                {
+                    for (float n = V1min; n <= V1max; n += V1delta)
+                    {
+                        if (TriangleBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                            for (float alpha = V2max; alpha >= V2min; alpha -= (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
+                        }
+                        else if (SawBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                V1ValueTxtBox.Text = n.ToString();
+                                V2ValueTxtBox.Text = alpha.ToString();
+
+                                V1ValueTxtBox.Update();
+                                V2ValueTxtBox.Update();
+
+                                try
+                                {
+                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                                    MeasurementActiveTxtBox.Text = "500";
+
+                                    MeasurementActiveTxtBox.Update();
+
+                                    Thread.Sleep(500);
+                                }
+                            }
                         }
                     }
                 }
@@ -295,6 +526,15 @@ namespace ECUTestSoftwareConfigTool
                 float MeasurementTime = (float.Parse(MeasurementActiveTxtBox.Text) / 1000);
 
                 float Time = Steps * Steps * MeasurementTime;
+
+                if(TriangleBtnV1.Checked && TriangleBtnV2.Checked)
+                {
+                    Time = Time * 4;
+                }
+                else if(TriangleBtnV1.Checked || TriangleBtnV2.Checked)
+                {
+                    Time = Time * 2;
+                }
 
                 return Time;
             }

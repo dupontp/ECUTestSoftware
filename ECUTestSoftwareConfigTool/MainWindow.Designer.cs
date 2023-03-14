@@ -68,12 +68,20 @@
             this.label11 = new System.Windows.Forms.Label();
             this.SimTimeTxtBox = new System.Windows.Forms.TextBox();
             this.CalcSimTimeBtn = new System.Windows.Forms.Button();
-            this.SawBtn = new System.Windows.Forms.RadioButton();
-            this.TriangleBtn = new System.Windows.Forms.RadioButton();
+            this.V1Panel = new System.Windows.Forms.Panel();
+            this.RandBtnV1 = new System.Windows.Forms.RadioButton();
+            this.TriangleBtnV1 = new System.Windows.Forms.RadioButton();
+            this.SawBtnV1 = new System.Windows.Forms.RadioButton();
+            this.V2Panel = new System.Windows.Forms.Panel();
+            this.RandBtnV2 = new System.Windows.Forms.RadioButton();
+            this.TriangleBtnV2 = new System.Windows.Forms.RadioButton();
+            this.SawBtnV2 = new System.Windows.Forms.RadioButton();
             LoadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StepSlider)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.V1Panel.SuspendLayout();
+            this.V2Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LoadBtn
@@ -93,7 +101,7 @@
             this.label1.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 16);
+            this.label1.Size = new System.Drawing.Size(78, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Variable";
             // 
@@ -144,7 +152,7 @@
             // StartBtn
             // 
             this.StartBtn.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartBtn.Location = new System.Drawing.Point(920, 43);
+            this.StartBtn.Location = new System.Drawing.Point(992, 44);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(132, 52);
             this.StartBtn.TabIndex = 7;
@@ -158,7 +166,7 @@
             this.label2.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(139, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Minimal";
             // 
@@ -168,7 +176,7 @@
             this.label3.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(424, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 16);
+            this.label3.Size = new System.Drawing.Size(75, 15);
             this.label3.TabIndex = 9;
             this.label3.Text = "Maximal";
             // 
@@ -178,7 +186,7 @@
             this.label5.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(12, 113);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
+            this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Steps";
             // 
@@ -199,7 +207,7 @@
             this.label4.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(19, 156);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 16);
+            this.label4.Size = new System.Drawing.Size(19, 15);
             this.label4.TabIndex = 13;
             this.label4.Text = "2";
             // 
@@ -209,7 +217,7 @@
             this.label6.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(809, 161);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 16);
+            this.label6.Size = new System.Drawing.Size(49, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "1000";
             // 
@@ -235,7 +243,7 @@
             this.label7.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(1215, 43);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(211, 16);
+            this.label7.Size = new System.Drawing.Size(208, 15);
             this.label7.TabIndex = 17;
             this.label7.Text = "Measurement active time";
             // 
@@ -277,7 +285,7 @@
             this.label9.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(3, 94);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 16);
+            this.label9.Size = new System.Drawing.Size(85, 15);
             this.label9.TabIndex = 19;
             this.label9.Text = "Delta V2";
             // 
@@ -287,7 +295,7 @@
             this.label8.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(3, 65);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 16);
+            this.label8.Size = new System.Drawing.Size(79, 15);
             this.label8.TabIndex = 18;
             this.label8.Text = "Delta V1";
             // 
@@ -347,7 +355,7 @@
             this.label10.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(12, 612);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 16);
+            this.label10.Size = new System.Drawing.Size(77, 15);
             this.label10.TabIndex = 22;
             this.label10.Text = "Filename";
             // 
@@ -415,7 +423,7 @@
             this.label11.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(1215, 113);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(209, 16);
+            this.label11.Size = new System.Drawing.Size(215, 15);
             this.label11.TabIndex = 26;
             this.label11.Text = "Estimated simulation time";
             // 
@@ -437,40 +445,106 @@
             this.CalcSimTimeBtn.UseVisualStyleBackColor = true;
             this.CalcSimTimeBtn.Click += new System.EventHandler(this.CalcSimTimeBtn_Click);
             // 
-            // SawBtn
+            // V1Panel
             // 
-            this.SawBtn.AutoSize = true;
-            this.SawBtn.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.dok;
-            this.SawBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SawBtn.Location = new System.Drawing.Point(709, 44);
-            this.SawBtn.Name = "SawBtn";
-            this.SawBtn.Size = new System.Drawing.Size(94, 19);
-            this.SawBtn.TabIndex = 28;
-            this.SawBtn.TabStop = true;
-            this.SawBtn.Text = "                       ";
-            this.SawBtn.UseVisualStyleBackColor = true;
+            this.V1Panel.Controls.Add(this.RandBtnV1);
+            this.V1Panel.Controls.Add(this.TriangleBtnV1);
+            this.V1Panel.Controls.Add(this.SawBtnV1);
+            this.V1Panel.Location = new System.Drawing.Point(709, 43);
+            this.V1Panel.Name = "V1Panel";
+            this.V1Panel.Size = new System.Drawing.Size(224, 31);
+            this.V1Panel.TabIndex = 34;
             // 
-            // TriangleBtn
+            // RandBtnV1
             // 
-            this.TriangleBtn.AutoSize = true;
-            this.TriangleBtn.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.dok;
-            this.TriangleBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.TriangleBtn.Location = new System.Drawing.Point(809, 44);
-            this.TriangleBtn.Name = "TriangleBtn";
-            this.TriangleBtn.Size = new System.Drawing.Size(94, 19);
-            this.TriangleBtn.TabIndex = 29;
-            this.TriangleBtn.TabStop = true;
-            this.TriangleBtn.Text = "                       ";
-            this.TriangleBtn.UseVisualStyleBackColor = true;
+            this.RandBtnV1.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.RandBtn;
+            this.RandBtnV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RandBtnV1.Location = new System.Drawing.Point(145, 3);
+            this.RandBtnV1.Name = "RandBtnV1";
+            this.RandBtnV1.Size = new System.Drawing.Size(74, 19);
+            this.RandBtnV1.TabIndex = 33;
+            this.RandBtnV1.TabStop = true;
+            this.RandBtnV1.Text = "                       ";
+            this.RandBtnV1.UseVisualStyleBackColor = true;
+            // 
+            // TriangleBtnV1
+            // 
+            this.TriangleBtnV1.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.TriangleBtn;
+            this.TriangleBtnV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.TriangleBtnV1.Location = new System.Drawing.Point(74, 3);
+            this.TriangleBtnV1.Name = "TriangleBtnV1";
+            this.TriangleBtnV1.Size = new System.Drawing.Size(65, 19);
+            this.TriangleBtnV1.TabIndex = 32;
+            this.TriangleBtnV1.TabStop = true;
+            this.TriangleBtnV1.Text = "                       ";
+            this.TriangleBtnV1.UseVisualStyleBackColor = true;
+            // 
+            // SawBtnV1
+            // 
+            this.SawBtnV1.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.SawBtn;
+            this.SawBtnV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SawBtnV1.Location = new System.Drawing.Point(3, 3);
+            this.SawBtnV1.Name = "SawBtnV1";
+            this.SawBtnV1.Size = new System.Drawing.Size(65, 19);
+            this.SawBtnV1.TabIndex = 31;
+            this.SawBtnV1.TabStop = true;
+            this.SawBtnV1.Text = "                       ";
+            this.SawBtnV1.UseVisualStyleBackColor = true;
+            // 
+            // V2Panel
+            // 
+            this.V2Panel.Controls.Add(this.RandBtnV2);
+            this.V2Panel.Controls.Add(this.TriangleBtnV2);
+            this.V2Panel.Controls.Add(this.SawBtnV2);
+            this.V2Panel.Location = new System.Drawing.Point(709, 72);
+            this.V2Panel.Name = "V2Panel";
+            this.V2Panel.Size = new System.Drawing.Size(224, 31);
+            this.V2Panel.TabIndex = 35;
+            // 
+            // RandBtnV2
+            // 
+            this.RandBtnV2.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.RandBtn;
+            this.RandBtnV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RandBtnV2.Location = new System.Drawing.Point(145, 3);
+            this.RandBtnV2.Name = "RandBtnV2";
+            this.RandBtnV2.Size = new System.Drawing.Size(74, 19);
+            this.RandBtnV2.TabIndex = 33;
+            this.RandBtnV2.TabStop = true;
+            this.RandBtnV2.Text = "                       ";
+            this.RandBtnV2.UseVisualStyleBackColor = true;
+            // 
+            // TriangleBtnV2
+            // 
+            this.TriangleBtnV2.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.TriangleBtn;
+            this.TriangleBtnV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.TriangleBtnV2.Location = new System.Drawing.Point(74, 3);
+            this.TriangleBtnV2.Name = "TriangleBtnV2";
+            this.TriangleBtnV2.Size = new System.Drawing.Size(65, 19);
+            this.TriangleBtnV2.TabIndex = 32;
+            this.TriangleBtnV2.TabStop = true;
+            this.TriangleBtnV2.Text = "                       ";
+            this.TriangleBtnV2.UseVisualStyleBackColor = true;
+            // 
+            // SawBtnV2
+            // 
+            this.SawBtnV2.BackgroundImage = global::ECUTestSoftwareConfigTool.Properties.Resources.SawBtn;
+            this.SawBtnV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SawBtnV2.Location = new System.Drawing.Point(3, 3);
+            this.SawBtnV2.Name = "SawBtnV2";
+            this.SawBtnV2.Size = new System.Drawing.Size(65, 19);
+            this.SawBtnV2.TabIndex = 31;
+            this.SawBtnV2.TabStop = true;
+            this.SawBtnV2.Text = "                       ";
+            this.SawBtnV2.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1435, 723);
-            this.Controls.Add(this.TriangleBtn);
-            this.Controls.Add(this.SawBtn);
+            this.Controls.Add(this.V2Panel);
+            this.Controls.Add(this.V1Panel);
             this.Controls.Add(this.CalcSimTimeBtn);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.SimTimeTxtBox);
@@ -507,6 +581,8 @@
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.V1Panel.ResumeLayout(false);
+            this.V2Panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,7 +629,13 @@
         private Label label11;
         private TextBox SimTimeTxtBox;
         private Button CalcSimTimeBtn;
-        private RadioButton SawBtn;
-        private RadioButton TriangleBtn;
+        private Panel V1Panel;
+        private RadioButton RandBtnV1;
+        private RadioButton TriangleBtnV1;
+        private RadioButton SawBtnV1;
+        private Panel V2Panel;
+        private RadioButton RandBtnV2;
+        private RadioButton TriangleBtnV2;
+        private RadioButton SawBtnV2;
     }
 }

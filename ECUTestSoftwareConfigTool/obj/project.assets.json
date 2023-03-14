@@ -8,31 +8,35 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Besitzer\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\p.dupont.MCG1.000\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
+      "projectUniqueName": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
       "projectName": "ECUTestSoftwareConfigTool",
-      "projectPath": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
-      "packagesPath": "C:\\Users\\Besitzer\\.nuget\\packages\\",
-      "outputPath": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\obj\\",
+      "projectPath": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
+      "packagesPath": "C:\\Users\\p.dupont.MCG1.000\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Besitzer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\p.dupont.MCG1.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -69,7 +73,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.2.22477.23\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
