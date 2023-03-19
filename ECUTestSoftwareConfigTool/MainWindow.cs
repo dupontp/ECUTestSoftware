@@ -1,3 +1,6 @@
+using System.Linq.Expressions;
+using Mathos.Parser;
+
 namespace ECUTestSoftwareConfigTool
 {
     public partial class MainWindow : Form
@@ -16,10 +19,24 @@ namespace ECUTestSoftwareConfigTool
             V2ComboBox.Items.Add("n");
             V2ComboBox.Items.Add("alpha");
 
+            SingleVariableComboBox.Items.Add("");
+            SingleVariableComboBox.Items.Add("n");
+            SingleVariableComboBox.Items.Add("alpha");
+
             StepsTxtBox.Text = "2";
 
             SawBtnV1.Checked = true;
             SawBtnV2.Checked = true;
+
+            FuncV1TxtBox.Visible = false;
+            x1maxTxtBox.Visible = false;
+            x1minTxtBox.Visible = false;
+            x1Label.Visible = false;
+
+            FuncV2TxtBox.Visible = false;
+            x2maxTxtBox.Visible = false;
+            x2minTxtBox.Visible = false;
+            x2Label.Visible = false;
 
             LoadSettings();
 
@@ -144,9 +161,12 @@ namespace ECUTestSoftwareConfigTool
                 deltaV1TxtBox.Update();
                 deltaV2TxtBox.Update();
 
+                SuppressedTxtBox.BackColor = Color.White;
+                SuppressedTxtBox.Update();
+
                 if (TriangleBtnV1.Checked)
                 {
-                    for (float n = V1min; n <= V1max; n += (V1delta))
+                    for (float V1Value = V1min; V1Value <= V1max; V1Value += (V1delta))
                     {
                         if (TriangleBtnV2.Checked)
                         {
@@ -154,80 +174,81 @@ namespace ECUTestSoftwareConfigTool
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
-
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
-
-                                try
-                                {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
-                                }
+                                SendVariable("n", V1Value, "alpha", alpha);
                             }
-                            for (float alpha = V2max; alpha >= V2min; alpha -= (V2delta))
+                            for (float V2Value = V2max; V2Value >= V2min; V2Value -= (V2delta))
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
-
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
-
-                                try
-                                {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
-                                }
+                                SendVariable("n", V1Value, "alpha", V2Value);
                             }
                         }
                         else if (SawBtnV2.Checked)
                         {
-                            for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                            for (float V2Value = V2min; V2Value <= V2max; V2Value += V2delta)
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (RandBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
+                                Random rnd = new Random();
+                                int V2Value = rnd.Next((int)Math.Round(V2min, 0), (int)Math.Round(V2max, 0));
+                                
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (FuncBtnV2.Checked)
+                        {
+                            float x2max = float.Parse(x2maxTxtBox.Text);
+                            float x2min = float.Parse(x2minTxtBox.Text);
+                            float deltaX = (x2max - x2min) / Steps;
 
+                            double V2Value = 0;
+                            for(float x = x2min; x <= x2max; x += deltaX)
+                            {
                                 try
                                 {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                    MathParser Parser = new MathParser();
+                                    V2Value = Parser.Parse(FuncV2TxtBox.Text.Replace("x", "(" + x.ToString() + ")"));
+                                    
+                                    if(V2Value > V2max && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2max;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    if(V2Value < V2min && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2min;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    SendVariable("n", V1Value, "alpha", float.Parse(V2Value.ToString()));
                                 }
-                                catch
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
+                                    if(x.ToString().Contains("E-0") || x.ToString().Contains("E-1"))
+                                    {
+                                        SendVariable("n", V1Value, "alpha", 0);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(ex.Message, "FEHLER");
+                                    }
                                 }
+                                
+
                             }
                         }
                     }
-                    for (float n = V1max; n >= V1min; n -= (V1delta))
+                    for (float V1Value = V1max; V1Value >= V1min; V1Value -= (V1delta))
                     {
                         if (TriangleBtnV2.Checked)
                         {
@@ -235,49 +256,13 @@ namespace ECUTestSoftwareConfigTool
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
-
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
-
-                                try
-                                {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
-                                }
+                                SendVariable("n", V1Value, "alpha", alpha);
                             }
                             for (float alpha = V2max; alpha >= V2min; alpha -= (V2delta))
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
-
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
-
-                                try
-                                {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
-                                }
+                                SendVariable("n", V1Value, "alpha", alpha);
                             }
                         }
                         else if (SawBtnV2.Checked)
@@ -286,108 +271,232 @@ namespace ECUTestSoftwareConfigTool
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
+                                SendVariable("n", V1Value, "alpha", alpha);
+                            }
+                        }
+                        else if (RandBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
+                                Random rnd = new Random();
+                                int V2Value = rnd.Next((int)Math.Round(V2min, 0), (int)Math.Round(V2max, 0));
 
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (FuncBtnV2.Checked)
+                        {
+                            float x2max = float.Parse(x2maxTxtBox.Text);
+                            float x2min = float.Parse(x2minTxtBox.Text);
+                            float deltaX = (x2max - x2min) / Steps;
+
+                            double V2Value = 0;
+                            for (float x = x2min; x <= x2max; x += deltaX)
+                            {
                                 try
                                 {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                    MathParser Parser = new MathParser();
+                                    V2Value = Parser.Parse(FuncV2TxtBox.Text.Replace("x", "(" + x.ToString() + ")"));
+
+                                    if (V2Value > V2max && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2max;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    if (V2Value < V2min && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2min;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    SendVariable("n", V1Value, "alpha", float.Parse(V2Value.ToString()));
                                 }
-                                catch
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
+                                    if (x.ToString().Contains("E-0") || x.ToString().Contains("E-1"))
+                                    {
+                                        SendVariable("n", V1Value, "alpha", 0);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(ex.Message, "FEHLER");
+                                    }
                                 }
+
+
                             }
                         }
                     }
                 }
                 else if (SawBtnV1.Checked)
                 {
-                    for (float n = V1min; n <= V1max; n += V1delta)
+                    for (float V1Value = V1min; V1Value <= V1max; V1Value += (V1delta))
                     {
                         if (TriangleBtnV2.Checked)
+                        {
+                            for (float V2Value = V2min; V2Value <= V2max; V2Value += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                            for (float V2Value = V2max; V2Value >= V2min; V2Value -= (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (SawBtnV2.Checked)
+                        {
+                            for (float V2Value = V2min; V2Value <= V2max; V2Value += V2delta)
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
+
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (RandBtnV2.Checked)
                         {
                             for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
+                                Random rnd = new Random();
+                                int V2Value = rnd.Next((int)Math.Round(V2min, 0), (int)Math.Round(V2max, 0));
 
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (FuncBtnV2.Checked)
+                        {
+                            float x2max = float.Parse(x2maxTxtBox.Text);
+                            float x2min = float.Parse(x2minTxtBox.Text);
+                            float deltaX = (x2max - x2min) / Steps;
 
+                            double V2Value = 0;
+                            for (float x = x2min; x <= x2max; x += deltaX)
+                            {
                                 try
                                 {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                    MathParser Parser = new MathParser();
+                                    V2Value = Parser.Parse(FuncV2TxtBox.Text.Replace("x", "(" + x.ToString() + ")"));
+
+                                    if (V2Value > V2max && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2max;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    if (V2Value < V2min && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2min;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    SendVariable("n", V1Value, "alpha", float.Parse(V2Value.ToString()));
                                 }
-                                catch
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
+                                    if (x.ToString().Contains("E-0") || x.ToString().Contains("E-1"))
+                                    {
+                                        SendVariable("n", V1Value, "alpha", 0);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(ex.Message, "FEHLER");
+                                    }
                                 }
+
+
                             }
-                            for (float alpha = V2max; alpha >= V2min; alpha -= (V2delta))
+                        }
+                    }
+                }
+                else if (RandBtnV1.Checked)
+                {
+                    for (float n = V1min; n <= V1max; n += (V1delta))
+                    {
+                        Random rnd = new Random();
+                        int V1Value = rnd.Next((int)Math.Round(V1min, 0), (int)Math.Round(V1max, 0));
+
+                        if (TriangleBtnV2.Checked)
+                        {
+                            for (float V2Value = V2min; V2Value <= V2max; V2Value += (V2delta))
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                            for (float V2Value = V2max; V2Value >= V2min; V2Value -= (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
-
-                                try
-                                {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
-                                }
+                                SendVariable("n", V1Value, "alpha", V2Value);
                             }
                         }
                         else if (SawBtnV2.Checked)
                         {
-                            for (float alpha = V2min; alpha <= V2max; alpha += V2delta)
+                            for (float V2Value = V2min; V2Value <= V2max; V2Value += V2delta)
                             {
                                 //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Text = n.ToString();
-                                V2ValueTxtBox.Text = alpha.ToString();
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (RandBtnV2.Checked)
+                        {
+                            for (float alpha = V2min; alpha <= V2max; alpha += (V2delta))
+                            {
+                                //myDevice.RPM.Enginespeed = (int)Math.Round(n, 0);
 
-                                V1ValueTxtBox.Update();
-                                V2ValueTxtBox.Update();
+                                Random rndV2 = new Random();
+                                int V2Value = rndV2.Next((int)Math.Round(V2min, 0), (int)Math.Round(V2max, 0));
 
+                                SendVariable("n", V1Value, "alpha", V2Value);
+                            }
+                        }
+                        else if (FuncBtnV2.Checked)
+                        {
+                            float x2max = float.Parse(x2maxTxtBox.Text);
+                            float x2min = float.Parse(x2minTxtBox.Text);
+                            float deltaX = (x2max - x2min) / Steps;
+
+                            double V2Value = 0;
+                            for (float x = x2min; x <= x2max; x += deltaX)
+                            {
                                 try
                                 {
-                                    Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+                                    MathParser Parser = new MathParser();
+                                    V2Value = Parser.Parse(FuncV2TxtBox.Text.Replace("x", "(" + x.ToString() + ")"));
+
+                                    if (V2Value > V2max && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2max;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    if (V2Value < V2min && SuppressChkBox.Checked)
+                                    {
+                                        V2Value = V2min;
+                                        SuppressedTxtBox.BackColor = Color.Red;
+                                        SuppressedTxtBox.Update();
+                                    }
+                                    SendVariable("n", V1Value, "alpha", float.Parse(V2Value.ToString()));
                                 }
-                                catch
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
-                                    MeasurementActiveTxtBox.Text = "500";
-
-                                    MeasurementActiveTxtBox.Update();
-
-                                    Thread.Sleep(500);
+                                    if (x.ToString().Contains("E-0") || x.ToString().Contains("E-1"))
+                                    {
+                                        SendVariable("n", V1Value, "alpha", 0);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(ex.Message, "FEHLER");
+                                    }
                                 }
                             }
                         }
@@ -395,6 +504,40 @@ namespace ECUTestSoftwareConfigTool
                 }
                 MessageBox.Show("Simulation erfolgreich beendet!", "INFO");
             }
+        }
+
+        private void SendVariable(string Variable1, float Value1, string Variable2, float Value2)
+        {
+            V1ValueTxtBox.Text = Value1.ToString();
+            V2ValueTxtBox.Text = Value2.ToString();
+
+            V1ValueTxtBox.Update();
+            V2ValueTxtBox.Update();
+
+            try
+            {
+                Thread.Sleep(int.Parse(MeasurementActiveTxtBox.Text));
+            }
+            catch
+            {
+                MessageBox.Show("Active Measurement Time falsch codiert! Es wird 500ms gewählt.", "FEHLER");
+                MeasurementActiveTxtBox.Text = "500";
+
+                MeasurementActiveTxtBox.Update();
+
+                Thread.Sleep(500);
+            }
+        }
+
+        private void SendSingleVariable(string Variable, float Value)
+        {
+            V1TxtBox.Text = Variable.ToString();
+            V1ValueTxtBox.Text = Value.ToString();
+
+            V2TxtBox.Text = "";
+            V2ValueTxtBox.Text = "";
+            deltaV1TxtBox.Text = "";
+            deltaV2TxtBox.Text = "";
         }
 
         private void LoadBtn_Click(object sender, EventArgs e)
@@ -565,6 +708,46 @@ namespace ECUTestSoftwareConfigTool
             SettingsWindow FrmSet = new SettingsWindow();
 
             FrmSet.LoadForm();
+        }
+
+        private void TriangleBtnV2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SingleSendBtn_Click(object sender, EventArgs e)
+        {
+            if (SingleVariableComboBox.SelectedItem == "n")
+            {
+                float Value = float.Parse(SingleValueTxtBox.Text);
+                SendSingleVariable("n", Value);
+            }
+            else if (SingleVariableComboBox.SelectedItem == "alpha")
+            {
+                float Value = float.Parse(SingleValueTxtBox.Text);
+                SendSingleVariable("alpha", Value);
+            }
+        }
+
+        private void FuncBtnV1_CheckedChanged(object sender, EventArgs e)
+        {
+            FuncV1TxtBox.Visible = FuncBtnV1.Checked;
+            x1maxTxtBox.Visible = FuncBtnV1.Checked;
+            x1minTxtBox.Visible = FuncBtnV1.Checked;
+            x1Label.Visible = FuncBtnV1.Checked;
+        }
+
+        private void FuncBtnV2_CheckedChanged(object sender, EventArgs e)
+        {
+            FuncV2TxtBox.Visible = FuncBtnV2.Checked;
+            x2maxTxtBox.Visible = FuncBtnV2.Checked;
+            x2minTxtBox.Visible = FuncBtnV2.Checked;
+            x2Label.Visible = FuncBtnV2.Checked;
+        }
+
+        private void SuppressChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

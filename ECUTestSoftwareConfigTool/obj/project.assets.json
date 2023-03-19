@@ -1,42 +1,70 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "MathosParser/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MathParser.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MathParser.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "MathosParser/2.0.0": {
+      "sha512": "HwL4w5Eljn2aT8AouCHzllteLdSq8IBnNzfcK2ttDkfFM3S/vpSWl85SNUJbABpybDL65vSiQ1kR4JQJxiGUvw==",
+      "type": "package",
+      "path": "mathosparser/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/MathParser.dll",
+        "lib/net46/MathParser.dll",
+        "lib/net461/MathParser.dll",
+        "lib/net462/MathParser.dll",
+        "lib/net47/MathParser.dll",
+        "lib/net471/MathParser.dll",
+        "lib/netstandard1.4/MathParser.dll",
+        "lib/netstandard2.0/MathParser.dll",
+        "mathosparser.2.0.0.nupkg.sha512",
+        "mathosparser.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "MathosParser >= 2.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\p.dupont.MCG1.000\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Besitzer\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
+      "projectUniqueName": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
       "projectName": "ECUTestSoftwareConfigTool",
-      "projectPath": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
-      "packagesPath": "C:\\Users\\p.dupont.MCG1.000\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\obj\\",
+      "projectPath": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
+      "packagesPath": "C:\\Users\\Besitzer\\.nuget\\packages\\",
+      "outputPath": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\p.dupont.MCG1.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Besitzer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -54,6 +82,12 @@
     "frameworks": {
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
+        "dependencies": {
+          "MathosParser": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -73,7 +107,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.2.22477.23\\RuntimeIdentifierGraph.json"
       }
     }
   }
