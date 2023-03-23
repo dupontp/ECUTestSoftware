@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kD6VxbdxLufPb2phDBc7wsiR7ZCdNW8ae4O8bXfPBaC24GmLdLUtQaqyhT5OYAUgptpkHyg6oAhPJarUfpCJQw==",
+  "dgSpecHash": "ZW1UV9BQFoE9ov7dHdqeb6hY0B62yCvwolTEeylbgpVlfVzndfTjh71uIwtKU59avhlg/qC1q7qfWPPALG5NUA==",
   "success": true,
-  "projectFilePath": "E:\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
+  "projectFilePath": "C:\\Users\\p.dupont.MCG1.000\\Documents\\Projekte\\HTW\\ECUTestSoftware\\ECUTestSoftwareConfigTool\\ECUTestSoftwareConfigTool.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Besitzer\\.nuget\\packages\\mathosparser\\2.0.0\\mathosparser.2.0.0.nupkg.sha512"
+    "C:\\Users\\p.dupont.MCG1.000\\.nuget\\packages\\mathosparser\\2.0.0\\mathosparser.2.0.0.nupkg.sha512"
   ],
   "logs": []
 }
