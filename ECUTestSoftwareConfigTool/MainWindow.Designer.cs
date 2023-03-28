@@ -44,6 +44,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.FileNameLoadComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SuppressedTxtBox1 = new System.Windows.Forms.TextBox();
+            this.SuppressChkBox1 = new System.Windows.Forms.CheckBox();
             this.x2Label = new System.Windows.Forms.Label();
             this.x1Label = new System.Windows.Forms.Label();
             this.x2maxTxtBox = new System.Windows.Forms.TextBox();
@@ -95,8 +97,8 @@
             this.SingleVariableComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.SingleSendBtn = new System.Windows.Forms.Button();
-            this.SuppressChkBox = new System.Windows.Forms.CheckBox();
-            this.SuppressedTxtBox = new System.Windows.Forms.TextBox();
+            this.SuppressedTxtBox2 = new System.Windows.Forms.TextBox();
+            this.SuppressChkBox2 = new System.Windows.Forms.CheckBox();
             LoadBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -156,7 +158,7 @@
             this.label9.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(3, 94);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 16);
+            this.label9.Size = new System.Drawing.Size(85, 15);
             this.label9.TabIndex = 19;
             this.label9.Text = "Delta V2";
             // 
@@ -166,7 +168,7 @@
             this.label8.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(3, 65);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 16);
+            this.label8.Size = new System.Drawing.Size(79, 15);
             this.label8.TabIndex = 18;
             this.label8.Text = "Delta V1";
             // 
@@ -226,7 +228,7 @@
             this.label10.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(198, 218);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 16);
+            this.label10.Size = new System.Drawing.Size(77, 15);
             this.label10.TabIndex = 22;
             this.label10.Text = "Filename";
             // 
@@ -242,8 +244,10 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.SuppressedTxtBox);
-            this.panel2.Controls.Add(this.SuppressChkBox);
+            this.panel2.Controls.Add(this.SuppressedTxtBox2);
+            this.panel2.Controls.Add(this.SuppressChkBox2);
+            this.panel2.Controls.Add(this.SuppressedTxtBox1);
+            this.panel2.Controls.Add(this.SuppressChkBox1);
             this.panel2.Controls.Add(this.x2Label);
             this.panel2.Controls.Add(this.x1Label);
             this.panel2.Controls.Add(this.x2maxTxtBox);
@@ -281,6 +285,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1411, 325);
             this.panel2.TabIndex = 36;
+            // 
+            // SuppressedTxtBox1
+            // 
+            this.SuppressedTxtBox1.Location = new System.Drawing.Point(1383, 150);
+            this.SuppressedTxtBox1.Name = "SuppressedTxtBox1";
+            this.SuppressedTxtBox1.ReadOnly = true;
+            this.SuppressedTxtBox1.Size = new System.Drawing.Size(23, 23);
+            this.SuppressedTxtBox1.TabIndex = 66;
+            // 
+            // SuppressChkBox1
+            // 
+            this.SuppressChkBox1.AutoSize = true;
+            this.SuppressChkBox1.Location = new System.Drawing.Point(1196, 152);
+            this.SuppressChkBox1.Name = "SuppressChkBox1";
+            this.SuppressChkBox1.Size = new System.Drawing.Size(181, 19);
+            this.SuppressChkBox1.TabIndex = 65;
+            this.SuppressChkBox1.Text = "Wertebereich x1 beschränken";
+            this.SuppressChkBox1.UseVisualStyleBackColor = true;
+            this.SuppressChkBox1.CheckedChanged += new System.EventHandler(this.SuppressChkBox_CheckedChanged);
             // 
             // x2Label
             // 
@@ -488,7 +511,7 @@
             this.label11.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(1198, 277);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(209, 16);
+            this.label11.Size = new System.Drawing.Size(215, 15);
             this.label11.TabIndex = 54;
             this.label11.Text = "Estimated simulation time";
             // 
@@ -505,7 +528,7 @@
             this.label7.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(1199, 215);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(211, 16);
+            this.label7.Size = new System.Drawing.Size(208, 15);
             this.label7.TabIndex = 52;
             this.label7.Text = "Measurement active time";
             // 
@@ -529,7 +552,7 @@
             this.label6.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(803, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 16);
+            this.label6.Size = new System.Drawing.Size(49, 15);
             this.label6.TabIndex = 49;
             this.label6.Text = "1000";
             // 
@@ -539,7 +562,7 @@
             this.label4.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(13, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 16);
+            this.label4.Size = new System.Drawing.Size(19, 15);
             this.label4.TabIndex = 48;
             this.label4.Text = "2";
             // 
@@ -559,7 +582,7 @@
             this.label5.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(6, 96);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
+            this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 46;
             this.label5.Text = "Steps";
             // 
@@ -569,7 +592,7 @@
             this.label3.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(418, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 16);
+            this.label3.Size = new System.Drawing.Size(75, 15);
             this.label3.TabIndex = 45;
             this.label3.Text = "Maximal";
             // 
@@ -579,7 +602,7 @@
             this.label2.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(133, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 44;
             this.label2.Text = "Minimal";
             // 
@@ -644,7 +667,7 @@
             this.label1.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(6, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 16);
+            this.label1.Size = new System.Drawing.Size(78, 15);
             this.label1.TabIndex = 36;
             this.label1.Text = "Variable";
             // 
@@ -703,7 +726,7 @@
             this.label12.Font = new System.Drawing.Font("Montalban", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Location = new System.Drawing.Point(12, 25);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(383, 34);
+            this.label12.Size = new System.Drawing.Size(395, 35);
             this.label12.TabIndex = 37;
             this.label12.Text = "Multiple Value Test";
             // 
@@ -713,7 +736,7 @@
             this.label14.Font = new System.Drawing.Font("Montalban", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(9, 522);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(340, 34);
+            this.label14.Size = new System.Drawing.Size(349, 35);
             this.label14.TabIndex = 39;
             this.label14.Text = "Single Value Test";
             // 
@@ -736,7 +759,7 @@
             this.label13.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(135, 7);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 16);
+            this.label13.Size = new System.Drawing.Size(54, 15);
             this.label13.TabIndex = 62;
             this.label13.Text = "Value";
             // 
@@ -761,7 +784,7 @@
             this.label15.Font = new System.Drawing.Font("Montalban", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.Location = new System.Drawing.Point(8, 7);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 16);
+            this.label15.Size = new System.Drawing.Size(78, 15);
             this.label15.TabIndex = 59;
             this.label15.Text = "Variable";
             // 
@@ -777,24 +800,23 @@
             this.SingleSendBtn.UseVisualStyleBackColor = true;
             this.SingleSendBtn.Click += new System.EventHandler(this.SingleSendBtn_Click);
             // 
-            // SuppressChkBox
+            // SuppressedTxtBox2
             // 
-            this.SuppressChkBox.AutoSize = true;
-            this.SuppressChkBox.Location = new System.Drawing.Point(1211, 152);
-            this.SuppressChkBox.Name = "SuppressChkBox";
-            this.SuppressChkBox.Size = new System.Drawing.Size(166, 19);
-            this.SuppressChkBox.TabIndex = 65;
-            this.SuppressChkBox.Text = "Wertebereich beschränken";
-            this.SuppressChkBox.UseVisualStyleBackColor = true;
-            this.SuppressChkBox.CheckedChanged += new System.EventHandler(this.SuppressChkBox_CheckedChanged);
+            this.SuppressedTxtBox2.Location = new System.Drawing.Point(1383, 179);
+            this.SuppressedTxtBox2.Name = "SuppressedTxtBox2";
+            this.SuppressedTxtBox2.ReadOnly = true;
+            this.SuppressedTxtBox2.Size = new System.Drawing.Size(23, 23);
+            this.SuppressedTxtBox2.TabIndex = 68;
             // 
-            // SuppressedTxtBox
+            // SuppressChkBox2
             // 
-            this.SuppressedTxtBox.Location = new System.Drawing.Point(1383, 150);
-            this.SuppressedTxtBox.Name = "SuppressedTxtBox";
-            this.SuppressedTxtBox.ReadOnly = true;
-            this.SuppressedTxtBox.Size = new System.Drawing.Size(23, 23);
-            this.SuppressedTxtBox.TabIndex = 66;
+            this.SuppressChkBox2.AutoSize = true;
+            this.SuppressChkBox2.Location = new System.Drawing.Point(1196, 181);
+            this.SuppressChkBox2.Name = "SuppressChkBox2";
+            this.SuppressChkBox2.Size = new System.Drawing.Size(181, 19);
+            this.SuppressChkBox2.TabIndex = 67;
+            this.SuppressChkBox2.Text = "Wertebereich x2 beschränken";
+            this.SuppressChkBox2.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -897,7 +919,9 @@
         private TextBox x1maxTxtBox;
         private Label x2Label;
         private Label x1Label;
-        private CheckBox SuppressChkBox;
-        private TextBox SuppressedTxtBox;
+        private CheckBox SuppressChkBox1;
+        private TextBox SuppressedTxtBox1;
+        private TextBox SuppressedTxtBox2;
+        private CheckBox SuppressChkBox2;
     }
 }
