@@ -102,6 +102,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MathParser, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MathosParser.2.0.0\lib\net471\MathParser.dll</HintPath>
+    </Reference>
     <Reference Include="MicroLC_CommunicationProtocol">
       <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_CommunicationProtocol.dll</HintPath>
     </Reference>
@@ -112,7 +115,7 @@
       <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Device.Contract.dll</HintPath>
     </Reference>
     <Reference Include="MicroLC_Software_API">
-      <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Software_API.dll</HintPath>
+      <HintPath>lib\MicroLC_Software_API.dll</HintPath>
     </Reference>
     <Reference Include="MicroLC_Software_Logic">
       <HintPath>..\..\..\..\DriveFS\Dokumente\HTW\2. Semester (WS)\Seminar und Projekt\INCA-Projekt\Dokumentation\MicroLC Software\lib\MicroLC_Software_Logic.dll</HintPath>
@@ -158,6 +161,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutWindow.Designer.cs">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="InstrumentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,13 +180,24 @@
       <DependentUpon>InstrumentResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsWindow.Designer.cs">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="WidgetHostEventSink.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="InstrumentProperties.xml" />
+    <None Include="Resources\SawBtn.PNG" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Resources\htwsaar_Logo_ingwi.png" />
     <None Include="Resources\Marvin.PNG" />
-    <None Include="Resources\Ico_InstrumentIcon.ico" />
+    <EmbeddedResource Include="AboutWindow.resx">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InstrumentControl.resx">
       <DependentUpon>InstrumentControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,8 +206,8 @@
   <ItemGroup>
     <EmbeddedResource Include="InstrumentResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>InstrumentResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>InstrumentResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -71,16 +71,6 @@ namespace HTW_Saar.ECUTestSoftware {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon Ico_InstrumentIcon {
-            get {
-                object obj = ResourceManager.GetObject("Ico_InstrumentIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;PropertiesMetadata Provider=&quot;HTW_Saar&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;C:\Program Files (x86)\Common Files\ETAS\INCA7.2\XML\schema\Etas.OpenEE.Properties.xsd&quot;&gt;
         ///  &lt;PropertyGroups&gt;
@@ -121,6 +111,16 @@ namespace HTW_Saar.ECUTestSoftware {
         internal static System.Drawing.Bitmap Marvin {
             get {
                 object obj = ResourceManager.GetObject("Marvin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SawBtn {
+            get {
+                object obj = ResourceManager.GetObject("SawBtn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
