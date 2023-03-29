@@ -44,6 +44,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.FileNameLoadComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SuppressedTxtBox2 = new System.Windows.Forms.TextBox();
+            this.SuppressChkBox2 = new System.Windows.Forms.CheckBox();
             this.SuppressedTxtBox1 = new System.Windows.Forms.TextBox();
             this.SuppressChkBox1 = new System.Windows.Forms.CheckBox();
             this.x2Label = new System.Windows.Forms.Label();
@@ -97,8 +99,6 @@
             this.SingleVariableComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.SingleSendBtn = new System.Windows.Forms.Button();
-            this.SuppressedTxtBox2 = new System.Windows.Forms.TextBox();
-            this.SuppressChkBox2 = new System.Windows.Forms.CheckBox();
             LoadBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -285,6 +285,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1411, 325);
             this.panel2.TabIndex = 36;
+            // 
+            // SuppressedTxtBox2
+            // 
+            this.SuppressedTxtBox2.Location = new System.Drawing.Point(1383, 179);
+            this.SuppressedTxtBox2.Name = "SuppressedTxtBox2";
+            this.SuppressedTxtBox2.ReadOnly = true;
+            this.SuppressedTxtBox2.Size = new System.Drawing.Size(23, 23);
+            this.SuppressedTxtBox2.TabIndex = 68;
+            // 
+            // SuppressChkBox2
+            // 
+            this.SuppressChkBox2.AutoSize = true;
+            this.SuppressChkBox2.Location = new System.Drawing.Point(1196, 181);
+            this.SuppressChkBox2.Name = "SuppressChkBox2";
+            this.SuppressChkBox2.Size = new System.Drawing.Size(181, 19);
+            this.SuppressChkBox2.TabIndex = 67;
+            this.SuppressChkBox2.Text = "Wertebereich x2 beschränken";
+            this.SuppressChkBox2.UseVisualStyleBackColor = true;
             // 
             // SuppressedTxtBox1
             // 
@@ -545,6 +563,7 @@
             this.StepsTxtBox.Name = "StepsTxtBox";
             this.StepsTxtBox.Size = new System.Drawing.Size(121, 23);
             this.StepsTxtBox.TabIndex = 50;
+            this.StepsTxtBox.TextChanged += new System.EventHandler(this.StepsTxtBox_TextChanged);
             // 
             // label6
             // 
@@ -575,6 +594,7 @@
             this.StepSlider.Size = new System.Drawing.Size(829, 45);
             this.StepSlider.TabIndex = 47;
             this.StepSlider.Value = 2;
+            this.StepSlider.Scroll += new System.EventHandler(this.StepSlider_Scroll);
             // 
             // label5
             // 
@@ -799,24 +819,6 @@
             this.SingleSendBtn.Text = "SEND";
             this.SingleSendBtn.UseVisualStyleBackColor = true;
             this.SingleSendBtn.Click += new System.EventHandler(this.SingleSendBtn_Click);
-            // 
-            // SuppressedTxtBox2
-            // 
-            this.SuppressedTxtBox2.Location = new System.Drawing.Point(1383, 179);
-            this.SuppressedTxtBox2.Name = "SuppressedTxtBox2";
-            this.SuppressedTxtBox2.ReadOnly = true;
-            this.SuppressedTxtBox2.Size = new System.Drawing.Size(23, 23);
-            this.SuppressedTxtBox2.TabIndex = 68;
-            // 
-            // SuppressChkBox2
-            // 
-            this.SuppressChkBox2.AutoSize = true;
-            this.SuppressChkBox2.Location = new System.Drawing.Point(1196, 181);
-            this.SuppressChkBox2.Name = "SuppressChkBox2";
-            this.SuppressChkBox2.Size = new System.Drawing.Size(181, 19);
-            this.SuppressChkBox2.TabIndex = 67;
-            this.SuppressChkBox2.Text = "Wertebereich x2 beschränken";
-            this.SuppressChkBox2.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 

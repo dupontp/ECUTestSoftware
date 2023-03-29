@@ -10,6 +10,9 @@ namespace ECUTestSoftwareConfigTool
         public string[] Settings = new string[3];
         bool ActiveMeasurementTimeSet = false;
 
+        /// <summary>
+        /// Prozessabbild der Benutzeroberfläche als Struct
+        /// </summary>
         struct UIElementsStatus
         {
             public string V1ComboBoxContent;
@@ -83,6 +86,9 @@ namespace ECUTestSoftwareConfigTool
 
         }
 
+        /// <summary>
+        /// Funktion zum Laden der gespeicherten Einstellungen
+        /// </summary>
         private void LoadSettings() 
         {
             string Path = Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset";
@@ -105,6 +111,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Klick-Funktion des "Speichern"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             if (FileNameTxtBox.Text.Trim() == "")
@@ -230,6 +241,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Klick-Funktion des "Start"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void StartBtn_Click(object sender, EventArgs e)
         {
             ActiveMeasurementTimeSet = false;
@@ -273,6 +289,10 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Funktion für den automatisierten Testablauf im parallelen Thread
+        /// </summary>
+        /// <param name="CurrentStatus">Aktuelles Prozessabbild der Benutzeroberfläche</param>
         private void TestMethod(UIElementsStatus CurrentStatus)
         {
             if (CurrentStatus.V1ComboBoxContent == CurrentStatus.V2ComboBoxContent)
@@ -810,6 +830,14 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Übertragen der Variablen an den µLC
+        /// </summary>
+        /// <param name="Variable1">Variablenauswahl 1</param>
+        /// <param name="Value1">Wert Variable 1</param>
+        /// <param name="Variable2">Variablenauswahl 1</param>
+        /// <param name="Value2">Wert Variable 2</param>
+        /// <param name="MeasurementActiveTime">Zeit für jeden Testpunkt</param>
         private void SendVariable(string Variable1, float Value1, string Variable2, float Value2, string MeasurementActiveTime)
         {
             this.Invoke((MethodInvoker)delegate ()
@@ -847,6 +875,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Übertragen einer einzelnen Variable an den µLC
+        /// </summary>
+        /// <param name="Variable">Variablenauswahl</param>
+        /// <param name="Value">Wert der Variable</param>
         private void SendSingleVariable(string Variable, float Value)
         {
             V1TxtBox.Text = Variable.ToString();
@@ -858,6 +891,11 @@ namespace ECUTestSoftwareConfigTool
             deltaV2TxtBox.Text = "";
         }
 
+        /// <summary>
+        /// Klick-Funktion des "Laden"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void LoadBtn_Click(object sender, EventArgs e)
         {
             FileNameLoadComboBox.Items.Clear();
@@ -865,6 +903,9 @@ namespace ECUTestSoftwareConfigTool
             LoadFiles();
         }
 
+        /// <summary>
+        /// Füllen der Dateinamen-ComboBox mit den verfügbaren Konfigurationsdateien
+        /// </summary>
         private void LoadFiles()
         {
             try
@@ -885,13 +926,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-
-
+        /// <summary>
+        /// Funktion bei Änderung der Steps-Textbox
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void StepsTxtBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -900,15 +939,25 @@ namespace ECUTestSoftwareConfigTool
             }
             catch
             {
-                MessageBox.Show("\"Steps\" müssen ein Integer-Wert sein!", "FEHLER");
+                MessageBox.Show("\"Steps\" müssen ein Integer-Wert zwischen 2 und 1000 sein!", "FEHLER");
             }
         }
 
+        /// <summary>
+        /// Funktion bei Änderung der Slider-Position
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void StepSlider_Scroll(object sender, EventArgs e)
         {
             StepsTxtBox.Text = StepSlider.Value.ToString();
         }
 
+        /// <summary>
+        /// Funktion bei Änderung der Measurement Active Time Textbox
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void MeasurementActiveTxtBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -923,6 +972,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Funktion bei Änderung der Filename-Combobox
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void FileNameLoadComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -998,6 +1052,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Klick-Funktion des Buttons zur Berechnung der Simulationszeit
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void CalcSimTimeBtn_Click(object sender, EventArgs e)
         {
             float SimTime = GetSimTime();
@@ -1027,24 +1086,19 @@ namespace ECUTestSoftwareConfigTool
 
         }
 
+        /// <summary>
+        /// Berechnung der benötigten Simulationszeit
+        /// </summary>
+        /// <returns>Gibt die ermittelte Zeit zurück</returns>
         private float GetSimTime()
         {
             try
             {
                 float Steps = float.Parse(StepsTxtBox.Text);
 
-                float MeasurementTime = (float.Parse(MeasurementActiveTxtBox.Text) / 1000);
+                float MeasurementTime = ((float)((float.Parse(MeasurementActiveTxtBox.Text) + 0.46) / 1000));
 
-                float Time = Steps * Steps * MeasurementTime;
-
-                if(TriangleBtnV1.Checked && TriangleBtnV2.Checked)
-                {
-                    Time = Time * 4;
-                }
-                else if(TriangleBtnV1.Checked || TriangleBtnV2.Checked)
-                {
-                    Time = Time * 2;
-                }
+                float Time = float.Parse((Steps * Steps * (MeasurementTime)).ToString());
 
                 return Time;
             }
@@ -1056,6 +1110,11 @@ namespace ECUTestSoftwareConfigTool
             return -1;
         }
 
+        /// <summary>
+        /// Klick-Funktion des "About"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void AboutBtn_Click(object sender, EventArgs e)
         {
             AboutWindow frmAbout = new AboutWindow();
@@ -1063,6 +1122,11 @@ namespace ECUTestSoftwareConfigTool
             frmAbout.Show();
         }
 
+        /// <summary>
+        /// Klick-Funktion des "Archive"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void ConfigArchiveBtn_Click(object sender, EventArgs e)
         {
             ArchiveWindow FormArchive = new ArchiveWindow();
@@ -1070,6 +1134,11 @@ namespace ECUTestSoftwareConfigTool
             FormArchive.LoadWindow(Settings[0]);
         }
 
+        /// <summary>
+        /// Klick-Funktion des "Settings"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void SettingsBtnClicked(object sender, EventArgs e)
         {
             SettingsWindow FrmSet = new SettingsWindow();
@@ -1082,6 +1151,11 @@ namespace ECUTestSoftwareConfigTool
 
         }
 
+        /// <summary>
+        /// Klick-Funktion des "Single Value Test Send"-Buttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void SingleSendBtn_Click(object sender, EventArgs e)
         {
             if (SingleVariableComboBox.SelectedItem == "n")
@@ -1096,6 +1170,11 @@ namespace ECUTestSoftwareConfigTool
             }
         }
 
+        /// <summary>
+        /// Funktion bei Änderung des FuncBtnV1-Radiobuttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void FuncBtnV1_CheckedChanged(object sender, EventArgs e)
         {
             FuncV1TxtBox.Visible = FuncBtnV1.Checked;
@@ -1104,6 +1183,11 @@ namespace ECUTestSoftwareConfigTool
             x1Label.Visible = FuncBtnV1.Checked;
         }
 
+        /// <summary>
+        /// Funktion bei Änderung des FuncBtnV2-Radiobuttons
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void FuncBtnV2_CheckedChanged(object sender, EventArgs e)
         {
             FuncV2TxtBox.Visible = FuncBtnV2.Checked;
@@ -1112,6 +1196,11 @@ namespace ECUTestSoftwareConfigTool
             x2Label.Visible = FuncBtnV2.Checked;
         }
 
+        /// <summary>
+        /// Funktion bei Änderung der SuppressValue-Checkbox
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">Eventargs</param>
         private void SuppressChkBox_CheckedChanged(object sender, EventArgs e)
         {
 

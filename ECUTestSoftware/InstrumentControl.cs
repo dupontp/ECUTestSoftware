@@ -1,19 +1,12 @@
-﻿using Etas.OpenEE;
-using Etas.OpenEE.Utils;
+﻿using bosch.de.abt.beg.microLC.API;
+using Etas.OpenEE;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using bosch.de.abt.beg.microLC.API;
-using System.Reflection;
-using System.Xml.Linq;
-using System.Threading;
-using System.Windows;
-using ASAM.XIL.Interfaces.Testbench.MAPort.Enum;
 using System.IO;
-using TextBox = System.Windows.Forms.TextBox;
+using System.Threading;
+using System.Windows.Forms;
 using ComboBox = System.Windows.Forms.ComboBox;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace HTW_Saar.ECUTestSoftware
 {
