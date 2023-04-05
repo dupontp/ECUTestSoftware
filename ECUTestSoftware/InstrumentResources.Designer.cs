@@ -72,7 +72,8 @@ namespace HTW_Saar.ECUTestSoftware {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;PropertiesMetadata Provider=&quot;HTW_Saar&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;C:\Program Files (x86)\Common Files\ETAS\INCA7.2\XML\schema\Etas.OpenEE.Properties.xsd&quot;&gt;
+        ///&lt;PropertiesMetadata Provider=&quot;HTW_Saar&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;
+        ///\Program Files (x86)\Common Files\ETAS\INCA7.2\XML\schema\Etas.OpenEE.Properties.xsd&quot;&gt;
         ///  &lt;PropertyGroups&gt;
         ///    &lt;PropertyGroup Type=&quot;InstrumentProperties&quot;&gt;
         ///    &lt;/PropertyGroup&gt;

@@ -16,5 +16,10 @@ namespace ECUTestSoftwareConfigTool
         {
             InitializeComponent();
         }
+
+        private void AboutWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

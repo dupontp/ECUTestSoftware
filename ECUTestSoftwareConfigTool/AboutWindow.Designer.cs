@@ -53,7 +53,7 @@
             this.label1.Font = new System.Drawing.Font("Montalban", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(300, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(309, 19);
+            this.label1.Size = new System.Drawing.Size(322, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "ECUTestSoftwareConfigTool";
             // 
@@ -64,7 +64,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(543, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 19);
+            this.label2.Size = new System.Drawing.Size(72, 19);
             this.label2.TabIndex = 6;
             this.label2.Text = "V1.0.0";
             // 
@@ -74,7 +74,7 @@
             this.label3.Font = new System.Drawing.Font("Montalban", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(502, 85);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 19);
+            this.label3.Size = new System.Drawing.Size(111, 19);
             this.label3.TabIndex = 7;
             this.label3.Text = "HTWSaar";
             // 
@@ -100,6 +100,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "AboutWindow";
             this.Text = "About";
+            this.Load += new System.EventHandler(this.AboutWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

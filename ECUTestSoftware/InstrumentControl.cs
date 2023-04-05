@@ -1,18 +1,13 @@
-﻿using Etas.OpenEE;
+﻿using bosch.de.abt.beg.microLC.API;
+using ECUTestSoftwareConfigTool;
+using Etas.OpenEE;
+using Mathos.Parser;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using ComboBox = System.Windows.Forms.ComboBox;
-using TextBox = System.Windows.Forms.TextBox;
-using System.Linq.Expressions;
-using System.Windows.Forms;
-using Mathos.Parser;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ECUTestSoftwareConfigTool;
-using bosch.de.abt.beg.microLC.API;
 
 namespace HTW_Saar.ECUTestSoftware
 {
@@ -67,7 +62,7 @@ namespace HTW_Saar.ECUTestSoftware
         static MicroLCManager manager = MicroLCManager.InitializeManager(true);
         Device myDevice = manager.Devices[0];
 
-        string Path = "C:\\Users\\p.dupont.MCG1.000\\Documents\\GoogleDrive\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
+        // string Path = "C:\\Users\\p.dupont.MCG1.000\\Documents\\GoogleDrive\\Dokumente\\HTW\\2. Semester (WS)\\Seminar und Projekt\\INCA-Projekt\\Software\\Konfigurationen";
         private IWidgetHost _WidgetHost; //is supposed to connect to and to react on all of the events included
         //private WidgetHostEventSink _EventSink; 
         //an object of the WidgetHostEventSink class of this custom instrument
@@ -179,7 +174,7 @@ namespace HTW_Saar.ECUTestSoftware
 
             this.InitializeValueAccesses(initializedElementReferences, null);
 
-            
+            MessageBox.Show("DEBUG1");
 
         }
 
@@ -1491,7 +1486,16 @@ namespace HTW_Saar.ECUTestSoftware
             if (SingleVariableComboBox.SelectedItem == "n")
             {
                 float Value = float.Parse(SingleValueTxtBox.Text);
-                SendSingleVariable("n", Value);
+                try
+                {
+                    myDevice.RPM.Enginespeed = Int32.Parse(SingleValueTxtBox.Text);
+                    SendSingleVariable("n", Value);
+                }
+                catch
+                {
+                    MessageBox.Show("Falsches Format!", "ERROR");
+                }
+                
             }
             else if (SingleVariableComboBox.SelectedItem == "alpha")
             {
