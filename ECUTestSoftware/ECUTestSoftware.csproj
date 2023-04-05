@@ -190,11 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InstrumentProperties.xml" />
-    <None Include="Resources\SawBtn.PNG" />
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Resources\htwsaar_Logo_ingwi.png" />
-    <None Include="Resources\Marvin.PNG" />
     <EmbeddedResource Include="AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

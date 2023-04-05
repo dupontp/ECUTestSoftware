@@ -173,9 +173,6 @@ namespace HTW_Saar.ECUTestSoftware
                 _WidgetHost.Configuration.WidgetDatas[0].ElementReferences;
 
             this.InitializeValueAccesses(initializedElementReferences, null);
-
-            MessageBox.Show("DEBUG1");
-
         }
 
         /// <summary>

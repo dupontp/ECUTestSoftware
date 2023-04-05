@@ -46,20 +46,20 @@ namespace HTW_Saar.ECUTestSoftware
 
         public void LoadForm()
         {
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset"))
-            {
-                StreamReader SR = new StreamReader(Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset");
+            //if (File.Exists(Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset"))
+            //{
+            //    StreamReader SR = new StreamReader(Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset");
 
-                string[] Settings = SR.ReadToEnd().Replace("\r", "").Split('\n');
+            //    string[] Settings = SR.ReadToEnd().Replace("\r", "").Split('\n');
 
-                SR.Close();
-                SR.Dispose();
+            //    SR.Close();
+            //    SR.Dispose();
 
-                PathTxtBox.Text = Settings[0];
+            //    PathTxtBox.Text = Settings[0];
 
-                IndividualPathRadioBtn.Checked = bool.Parse(Settings[1]);
-                SelectedPathRadioBtn.Checked = bool.Parse(Settings[2]);
-            }
+            //    IndividualPathRadioBtn.Checked = bool.Parse(Settings[1]);
+            //    SelectedPathRadioBtn.Checked = bool.Parse(Settings[2]);
+            //}
 
             this.Show();
         }
