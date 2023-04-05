@@ -415,24 +415,24 @@ namespace HTW_Saar.ECUTestSoftware
         /// </summary>
         private void LoadSettings()
         {
-            string Path = Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset";
-            if (!File.Exists(Path))
-            {
-                MessageBox.Show("Bei erster Benutzung muss das Programm in den Einstellungen konfiguriert werden!", "INFO");
+            //string Path = Directory.GetCurrentDirectory() + "\\InternalData\\Settings\\Settings.ptmset";
+            //if (!File.Exists(Path))
+            //{
+            //    MessageBox.Show("Bei erster Benutzung muss das Programm in den Einstellungen konfiguriert werden!", "INFO");
 
-                SettingsWindow frmSet = new SettingsWindow();
+            //    SettingsWindow frmSet = new SettingsWindow();
 
-                frmSet.LoadForm();
-            }
-            else
-            {
-                StreamReader SR = new StreamReader(Path);
+            //    frmSet.LoadForm();
+            //}
+            //else
+            //{
+            //    StreamReader SR = new StreamReader(Path);
 
-                Settings = SR.ReadToEnd().Replace("\r", "").Split('\n');
+            //    Settings = SR.ReadToEnd().Replace("\r", "").Split('\n');
 
-                SR.Close();
-                SR.Dispose();
-            }
+            //    SR.Close();
+            //    SR.Dispose();
+            //}
         }
 
         /// <summary>
